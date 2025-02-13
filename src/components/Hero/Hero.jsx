@@ -105,7 +105,13 @@ const Hero = () => {
         >
           Sonic Signal
         </motion.h1>
-
+        <motion.h2 
+        className="hero-desc"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+        >Dynamic and innovative technology solution provider that prides itself on the ability to deliver tailored solutions to meet the business aspirations and challenges.
+        </motion.h2>
         <motion.p
           className="hero-description"
           initial={{ opacity: 0 }}

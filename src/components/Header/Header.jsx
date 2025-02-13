@@ -18,6 +18,7 @@ const Header = () => {
               <Link to="/">Home</Link>
               <Link to="/about">About Us</Link>
               <Link to="/services">Services</Link>
+              <Link to="/shop">SonicShop</Link>
               <Link to="/sonichub">SonicHub</Link>
               <Link to="/contact">Contact Us</Link>
             </nav>
