@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../Header/Header.css"; 
 import {FaSearch, FaBars, FaTimes} from 'react-icons/fa';
 import SonicLogo from '../../assets/images/sonicsignal-logo.png';
@@ -7,10 +7,16 @@ import SonicLogo from '../../assets/images/sonicsignal-logo.png';
 const Header = () => { 
 
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
+
+  const isActive = (path) =>{ 
+    return location.pathname === path ? "active" : "";
+  }
+
     return (
         <header className='header'>
           <div className='container'>
@@ -25,12 +31,12 @@ const Header = () => {
             </button>
     
             <nav className={`nav ${isOpen ? "open" : "" }`}>
-              <Link to="/" onClick={toggleMenu}>Home</Link>
-              <Link to="/about" onClick={toggleMenu}>About Us</Link>
-              <Link to="/services" onClick={toggleMenu}>Services</Link>
-              <Link to="/shop" onClick={toggleMenu}>SonicShop</Link>
-              <Link to="/sonichub" onClick={toggleMenu}>SonicHub</Link>
-              <Link to="/contact" onClick={toggleMenu}>Contact Us</Link>
+              <Link to="/"  className={isActive("/")}onClick={toggleMenu}>Home</Link>
+              <Link to="/about"  className={isActive("/about")}onClick={toggleMenu}>About Us</Link>
+              <Link to="/services"  className={isActive("/services")}onClick={toggleMenu}>Services</Link>
+              <Link to="/shop"  className={isActive("/shop")}onClick={toggleMenu}>SonicShop</Link>
+              <Link to="/sonichub"  className={isActive("/sonichub")}onClick={toggleMenu}>SonicHub</Link>
+              <Link to="/contact"  className={isActive("/contact")}onClick={toggleMenu}>Contact Us</Link>
             </nav>
     
             <div className='search-bar'> 
