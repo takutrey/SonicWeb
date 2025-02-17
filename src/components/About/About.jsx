@@ -12,6 +12,10 @@ const AboutUs = () => {
   return (
     <section className="about-section">
       <div className="about-container">
+      <div className="about-title">
+            <h2 className='about-title-head'>About Us</h2>
+            <p className='about-title-description'>Delve into knowing what Sonic is all about</p>
+          </div>
         <div className="about-content fade-in">
           <div className="about-image-wrapper">
             <img
@@ -20,10 +24,9 @@ const AboutUs = () => {
               className="about-image"
             />
           </div>
+         
           
-          <div className="about-text">
-            <h2 className="about-title">About Our Company</h2>
-            
+          <div className="about-text">            
             <p className="about-description">
               We are a passionate team dedicated to creating innovative solutions 
               that make a difference. With years of experience and a commitment 
@@ -44,7 +47,7 @@ const AboutUs = () => {
               onClick={handleLearnMore}
               className="about-button"
             >
-              Learn More About Us
+              Learn More
             </button>
           </div>
         </div>
