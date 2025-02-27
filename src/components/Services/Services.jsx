@@ -1,13 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Plug,
   Wrench,
   Globe, 
   ArrowRight
 } from 'lucide-react';
-import '../Services/Services.css';
+import '../Services/Services.css'; 
+
+
 
 const Services = () => {
+
+  const navigate = useNavigate();
+
+const handleMoreServices = () => {
+  navigate("/services")
+}
   const services = [
     {
       icon: <Plug className="text-blue-600" />,
@@ -49,6 +58,11 @@ const Services = () => {
               </button>
             </div>
           ))}
+        </div>
+        <div className="more-services-button">
+          <button onClick={handleMoreServices} className="service-button">
+            More Services <ArrowRight />
+          </button>
         </div>
       </div>
     </section>

@@ -1,0 +1,144 @@
+.mission-values-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Space between mission and vision cards */
+  flex-wrap: wrap; /* Ensures responsiveness */
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+/* MISSION & VISION CARD */
+.mission-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  flex: 1 1 350px; /* Cards will auto-size but maintain a max width */
+  max-width: 400px;
+}
+
+.mission-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ICON */
+.mission-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.mission-icon svg {
+  width: 3rem;
+  height: 3rem;
+  color: #4a90e2;
+  transition: transform 0.3s ease;
+}
+
+.mission-card:hover .mission-icon svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* TEXT STYLES */
+.mission-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.mission-description {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+  .mission-values-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+  /*Core Values*/ 
+
+  .core-values-container {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  
+  .core-values-header-title h2 {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 2rem;
+  }
+  
+  /* FLEXBOX GRID */
+  .values-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  /* CARD STYLING */
+  .values-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    flex: 1 1 300px; /* Adjust width dynamically */
+    max-width: 350px;
+    text-align: center;
+  }
+  
+  .values-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .values-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .values-icon svg {
+    width: 3rem;
+    height: 3rem;
+    color: #4a90e2;
+    transition: transform 0.3s ease;
+  }
+  
+  .values-card:hover .values-icon svg {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .values-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+  }
+  
+  .values-description {
+    color: #4a5568;
+    line-height: 1.6;
+  }
+  
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    .values-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

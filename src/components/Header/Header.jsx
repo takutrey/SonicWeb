@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../Header/Header.css"; 
 import {FaSearch, FaBars, FaTimes} from 'react-icons/fa';
 import SonicLogo from '../../assets/images/sonicsignal-logo.png';
+console.log("Header loaded")
 
 const Header = () => { 
 
@@ -35,7 +36,6 @@ const Header = () => {
               <Link to="/about"  className={isActive("/about")}onClick={toggleMenu}>About Us</Link>
               <Link to="/services"  className={isActive("/services")}onClick={toggleMenu}>Services</Link>
               <Link to="/shop"  className={isActive("/shop")}onClick={toggleMenu}>SonicShop</Link>
-              <Link to="/sonichub"  className={isActive("/sonichub")}onClick={toggleMenu}>SonicHub</Link>
               <Link to="/contact"  className={isActive("/contact")}onClick={toggleMenu}>Contact Us</Link>
             </nav>
     

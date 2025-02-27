@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1",
+    "name": "Minimalist Watch",
+    "price": 199.99,
+    "description": "Elegant timepiece with a clean design",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+    "category": "Accessories"
+  },
+  {
+    "id": "2",
+    "name": "Premium Headphones",
+    "price": 299.99,
+    "description": "High-fidelity audio experience",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "category": "Electronics"
+  },
+  {
+    "id": "3",
+    "name": "Wireless Speaker",
+    "price": 159.99,
+    "description": "Crystal clear sound in a compact form",
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+    "category": "Electronics"
+  },
+  {
+    "id": "4",
+    "name": "Smart Camera",
+    "price": 399.99,
+    "description": "Capture moments in stunning detail",
+    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+    "category": "Electronics"
+  },
+  {
+    "id": "5",
+    "name": "Leather Wallet",
+    "price": 79.99,
+    "description": "Handcrafted premium leather with multiple compartments",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93",
+    "category": "Accessories"
+  },
+  {
+    "id": "6",
+    "name": "Designer Sunglasses",
+    "price": 149.99,
+    "description": "UV protection with stylish frames",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+    "category": "Accessories"
+  },
+  {
+    "id": "7",
+    "name": "Smart Fitness Tracker",
+    "price": 129.99,
+    "description": "Monitor your health and activities with precision",
+    "image": "https://images.unsplash.com/photo-1575311373937-040b8e1fd6b0",
+    "category": "Electronics"
+  },
+  {
+    "id": "8",
+    "name": "Organic Cotton T-shirt",
+    "price": 34.99,
+    "description": "Soft, sustainable fabric with modern fit",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+    "category": "Clothing"
+  },
+  {
+    "id": "9",
+    "name": "Designer Jeans",
+    "price": 89.99,
+    "description": "Premium denim with perfect stretch and durability",
+    "image": "https://images.unsplash.com/photo-1582552938357-32b906df40cb",
+    "category": "Clothing"
+  },
+  {
+    "id": "10",
+    "name": "Ergonomic Office Chair",
+    "price": 249.99,
+    "description": "Designed for all-day comfort and proper posture",
+    "image": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8",
+    "category": "Furniture"
+  },
+  {
+    "id": "11",
+    "name": "Modular Bookshelf",
+    "price": 179.99,
+    "description": "Customizable storage solution for any space",
+    "image": "https://images.unsplash.com/photo-1588279102920-e8b5891ff4b0",
+    "category": "Furniture"
+  },
+  {
+    "id": "12",
+    "name": "Smart Home Hub",
+    "price": 199.99,
+    "description": "Central control for your connected devices",
+    "image": "https://images.unsplash.com/photo-1558002038-bb0237f4629b",
+    "category": "Smart Home"
+  },
+  {
+    "id": "13",
+    "name": "Wireless Security Camera",
+    "price": 149.99,
+    "description": "24/7 monitoring with motion detection",
+    "image": "https://images.unsplash.com/photo-1582139329536-e7284fece509",
+    "category": "Smart Home"
+  },
+  {
+    "id": "14",
+    "name": "Gourmet Coffee Maker",
+    "price": 129.99,
+    "description": "Barista-quality brewing for your home",
+    "image": "https://images.unsplash.com/photo-1595246332886-b41a166ca018",
+    "category": "Kitchen"
+  },
+  {
+    "id": "15",
+    "name": "Chef's Knife Set",
+    "price": 189.99,
+    "description": "Professional-grade cutting tools for any recipe",
+    "image": "https://images.unsplash.com/photo-1593618998160-90d5c1ae32c6",
+    "category": "Kitchen"
+  },
+  {
+    "id": "16",
+    "name": "Yoga Mat",
+    "price": 49.99,
+    "description": "Non-slip surface for stability in any pose",
+    "image": "https://images.unsplash.com/photo-1592432678016-e910b452f9a2",
+    "category": "Fitness"
+  },
+  {
+    "id": "17",
+    "name": "Adjustable Dumbbell Set",
+    "price": 299.99,
+    "description": "Space-saving design with multiple weight options",
+    "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2",
+    "category": "Fitness"
+  },
+  {
+    "id": "18",
+    "name": "Luxury Scented Candle",
+    "price": 39.99,
+    "description": "Long-lasting fragrance for a relaxing atmosphere",
+    "image": "https://images.unsplash.com/photo-1603006905003-be475563bc59",
+    "category": "Home Decor"
+  },
+  {
+    "id": "19",
+    "name": "Decorative Throw Pillows",
+    "price": 59.99,
+    "description": "Set of two designer pillows to elevate your space",
+    "image": "https://images.unsplash.com/photo-1579656381439-47fddb983505",
+    "category": "Home Decor"
+  },
+  {
+    "id": "20",
+    "name": "Professional Drone",
+    "price": 799.99,
+    "description": "4K camera with stable flight and long battery life",
+    "image": "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9",
+    "category": "Photography"
+  }
+]

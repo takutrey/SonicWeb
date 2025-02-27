@@ -19,8 +19,7 @@ const Footer = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/services">Services</Link></li>
-            <li><Link to="/sonicshop">SonicShop</Link></li>
-            <li><Link to="/sonichub">SonicHub</Link></li>
+            <li><Link to="/shop">SonicShop</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
           </ul>
         </div>
@@ -28,11 +27,10 @@ const Footer = () => {
           <h3>Services</h3>
           <ul>
             <li><Link to="/">Infrastructure Cabling</Link></li>
-            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/about">Software Development</Link></li>
             <li><Link to="/services">Wireless Solutions</Link></li>
-            <li><Link to="/sonicshop">SonicShop</Link></li>
+            <li><Link to="/shop">Tech Consultancy</Link></li>
             <li><Link to="/sonichub">Maintenance Contracts</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
           </ul>
         </div>
 
