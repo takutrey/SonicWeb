@@ -27,14 +27,14 @@ const SonicShop = () => {
 
   const filteredProducts = useMemo(() => {
     return productsData.filter(product => {
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toLowerCase().includes(searchQuery.toUpperCase()); 
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toLowerCase().includes(searchQuery.toLowerCase()); 
       const matchesCategory = !selectedCategory || product.category === selectedCategory; 
       return matchesSearch && matchesCategory;
     });
   }, [searchQuery, selectedCategory]); 
 
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage); 
-  const paginatedProducts = filteredProducts.slice((currentPage -1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalPages = useMemo(() => Math.ceil(filteredProducts.length / itemsPerPage), [filteredProducts, itemsPerPage]);
+  const paginatedProducts = useMemo(() => filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage), [filteredProducts, currentPage, itemsPerPage]);
 
   const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0); 
 
@@ -104,7 +104,7 @@ const SonicShop = () => {
                     <p className="product-category">{product.category}</p>
                     <div className="product-footer">
                       <span className="product-price">${product.price.toFixed(2)}</span> 
-                      <button onClick={() => handleAddToCart(product)} className="add-to-cart-button">Add to Cart</button>
+                      <button onClick={() => handleAddToCart(product)} className="add-to-cart-button" disabled={items.some(item => item.id === product.id)}>{items.some(item => item.id === product.id) ? 'Added to Cart' : 'Add to Cart'}</button>
                     </div>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const SonicShop = () => {
                   <div>
                     {items.map((item) => {
                       return(
-                        <div key={item.image} className="cart-item">
+                        <div key={item.id} className="cart-item">
                         <img src={item.image} alt={item.name} className="cart-item-image" />
                         <div className="cart-item-details">
                           <h3 className="cart-item-name">{item.name}</h3>

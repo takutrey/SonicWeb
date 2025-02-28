@@ -52,7 +52,7 @@
     "name": "Smart Fitness Tracker",
     "price": 129.99,
     "description": "Monitor your health and activities with precision",
-    "image": "https://images.unsplash.com/photo-1575311373937-040b8e1fd6b0",
+    "image": "https://istarmax.com/wp-content/uploads/2022/01/s5-black-1024x1024.jpg",
     "category": "Electronics"
   },
   {
@@ -84,7 +84,7 @@
     "name": "Modular Bookshelf",
     "price": 179.99,
     "description": "Customizable storage solution for any space",
-    "image": "https://images.unsplash.com/photo-1588279102920-e8b5891ff4b0",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVShAy0E0oK7oVWooRyE8j3JGOvemynYbjcA&s",
     "category": "Furniture"
   },
   {
@@ -92,7 +92,7 @@
     "name": "Smart Home Hub",
     "price": 199.99,
     "description": "Central control for your connected devices",
-    "image": "https://images.unsplash.com/photo-1558002038-bb0237f4629b",
+    "image": "https://aeotec.com/wp-content/uploads/2023/10/SmartHomeHub-s-min.png",
     "category": "Smart Home"
   },
   {
@@ -103,22 +103,7 @@
     "image": "https://images.unsplash.com/photo-1582139329536-e7284fece509",
     "category": "Smart Home"
   },
-  {
-    "id": "14",
-    "name": "Gourmet Coffee Maker",
-    "price": 129.99,
-    "description": "Barista-quality brewing for your home",
-    "image": "https://images.unsplash.com/photo-1595246332886-b41a166ca018",
-    "category": "Kitchen"
-  },
-  {
-    "id": "15",
-    "name": "Chef's Knife Set",
-    "price": 189.99,
-    "description": "Professional-grade cutting tools for any recipe",
-    "image": "https://images.unsplash.com/photo-1593618998160-90d5c1ae32c6",
-    "category": "Kitchen"
-  },
+
   {
     "id": "16",
     "name": "Yoga Mat",
@@ -143,14 +128,7 @@
     "image": "https://images.unsplash.com/photo-1603006905003-be475563bc59",
     "category": "Home Decor"
   },
-  {
-    "id": "19",
-    "name": "Decorative Throw Pillows",
-    "price": 59.99,
-    "description": "Set of two designer pillows to elevate your space",
-    "image": "https://images.unsplash.com/photo-1579656381439-47fddb983505",
-    "category": "Home Decor"
-  },
+
   {
     "id": "20",
     "name": "Professional Drone",

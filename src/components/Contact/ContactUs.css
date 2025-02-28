@@ -1,0 +1,97 @@
+.hero-contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/free-vector/contact-us-concept-landing-page_52683-12860.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+}
+
+.hero-contact-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-contact-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-contact-cta-button {
+    padding: 0.8rem 2rem;
+    background-color: #c00;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.hero-contact-cta-button:hover {
+    background-color: #007bff;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Social Media Icon Colors */
+.facebook { background: #3b5998; }
+.twitter { background: #1da1f2; }
+.instagram { background: #e4405f; }
+.linkedin { background: #0077b5; }
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Map Section */
+.map-container {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+  
+  .map-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .map-container p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .map-embed iframe {
+    width: 100%;
+    max-width: 1200px;  /* Set a max width for large screens */
+    height: 400px; /* You can adjust the height */
+    border: none;
+  }
+  
+  @media (max-width: 768px) {
+    .map-embed iframe {
+      height: 300px; /* Reduce the height on smaller screens */
+    }
+  }
+  
