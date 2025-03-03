@@ -73,10 +73,18 @@
   }
   
   .core-values-header-title h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+  }
+
+  .core-values-header-title p {
+    font-size: 1.25rem;
     color: #2d3748;
     margin-bottom: 2rem;
   }
+
+  
   
   /* FLEXBOX GRID */
   .values-grid {

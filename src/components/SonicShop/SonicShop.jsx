@@ -1,13 +1,12 @@
-import React, {useState, useMemo} from "react";
+import React, { useState, useMemo } from "react";
 import '../SonicShop/SonicShop.css'
 import { ShoppingCart, X, Search } from "lucide-react";
-import {toast} from 'sonner'; 
+import { toast } from 'sonner'; 
 import { useCart } from "../../store/useCart";
 import productsData from "../../data/products.json";
-
+import { Link } from "react-router-dom";
 
 const categories = Array.from(new Set(productsData.map(product => product.category)));
-
 
 const SonicShop = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -18,20 +17,21 @@ const SonicShop = () => {
   const [minPrice, setMinPrice] = useState(0); 
   const [maxPrice, setMaxPrice] = useState(500);
 
-  const {items, addItem, removeItem, updateQuantity } = useCart();
+  const { items, addItem, removeItem, updateQuantity } = useCart();
 
   const handleAddToCart = (product) => {
     addItem(product); 
     toast.success("Added to cart");
-  } 
+  };
 
   const filteredProducts = useMemo(() => {
     return productsData.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toLowerCase().includes(searchQuery.toLowerCase()); 
       const matchesCategory = !selectedCategory || product.category === selectedCategory; 
-      return matchesSearch && matchesCategory;
+      const matchesPriceRange = product.price >= minPrice && product.price <= maxPrice;  // Price range filter
+      return matchesSearch && matchesCategory && matchesPriceRange;
     });
-  }, [searchQuery, selectedCategory]); 
+  }, [searchQuery, selectedCategory, minPrice, maxPrice]); 
 
   const totalPages = useMemo(() => Math.ceil(filteredProducts.length / itemsPerPage), [filteredProducts, itemsPerPage]);
   const paginatedProducts = useMemo(() => filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage), [filteredProducts, currentPage, itemsPerPage]);
@@ -81,6 +81,31 @@ const SonicShop = () => {
               <option value="24">24</option>
               <option value="30">30</option>
             </select>
+            <div className="price-range">
+              <label>Price Range</label>
+              <div className="slider-container">
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="500" 
+                  value={minPrice} 
+                  onChange={(e) => setMinPrice(Number(e.target.value))} 
+                  className="price-slider"
+                />
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="500" 
+                  value={maxPrice} 
+                  onChange={(e) => setMaxPrice(Number(e.target.value))} 
+                  className="price-slider"
+                />
+              </div>
+              <div className="price-labels">
+                <span>${minPrice}</span>
+                <span>${maxPrice}</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -99,12 +124,16 @@ const SonicShop = () => {
                     <img src={product.image} alt={product.name} className="product-image" />
                   </div>
                   <div className="product-info">
-                    <h3 className="product-name">{product.name}</h3>
+                    <Link to={`/product/${product.id}`} className="product-link">
+                      <h3 className="product-name">{product.name}</h3>
+                    </Link>
                     <p className="product-description">{product.description}</p>
                     <p className="product-category">{product.category}</p>
                     <div className="product-footer">
                       <span className="product-price">${product.price.toFixed(2)}</span> 
-                      <button onClick={() => handleAddToCart(product)} className="add-to-cart-button" disabled={items.some(item => item.id === product.id)}>{items.some(item => item.id === product.id) ? 'Added to Cart' : 'Add to Cart'}</button>
+                      <button onClick={() => handleAddToCart(product)} className="add-to-cart-button" disabled={items.some(item => item.id === product.id)}>
+                        {items.some(item => item.id === product.id) ? 'Added to Cart' : 'Add to Cart'}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -113,14 +142,13 @@ const SonicShop = () => {
           )}
         </div>
 
-          <div className="pagination">
-            <button onClick={handlePreviousPage} disabled={currentPage === 1} className="pagination-button">Previous</button>
-            <span className="page-info">Page {currentPage} of {totalPages}</span>
-            <button onClick={handleNextPage} disabled={currentPage === totalPages} className="pagination-button">
-              Next
-            </button>
-          </div>
-
+        <div className="pagination">
+          <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1} className="pagination-button">First</button>
+          <button onClick={handlePreviousPage} disabled={currentPage === 1} className="pagination-button">Previous</button>
+          <span className="page-info">Page {currentPage} of {totalPages}</span>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages} className="pagination-button">Next</button>
+          <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages} className="pagination-button">Last</button>
+        </div>
       </section> 
 
       {isCartOpen && (
@@ -135,29 +163,29 @@ const SonicShop = () => {
               </div>
               <div className="cart-items">
                 {items.length === 0 ? (
-                  <p className="cart-empty">Your cart is empty</p>
+                  <p className="cart-empty">
+                    Your cart is empty
+                    <button onClick={() => setIsCartOpen(false)} className="continue-shopping-button">Continue Shopping</button>
+                  </p>
                 ) : (
                   <div>
-                    {items.map((item) => {
-                      return(
-                        <div key={item.id} className="cart-item">
+                    {items.map((item) => (
+                      <div key={item.id} className="cart-item">
                         <img src={item.image} alt={item.name} className="cart-item-image" />
                         <div className="cart-item-details">
                           <h3 className="cart-item-name">{item.name}</h3>
-                          <p className="cart-item price">${item.price.toFixed(2)}</p>
-                          <div className="quality-controls">
-                            <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} className="quantity-button"> - </button>
+                          <p className="cart-item-price">${item.price.toFixed(2)}</p>
+                          <div className="quantity-controls">
+                            <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} className="quantity-button">-</button>
                             <span>{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity + 1))} className="quantity-button"> + </button>
+                            <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity + 1))} className="quantity-button">+</button>
                           </div>
                         </div>
                         <button onClick={() => removeItem(item.id)} className="remove-button">
                           <X />
                         </button>
                       </div>
-                      )
-                      
-                    })}
+                    ))}
                   </div>
                 )}
               </div>
@@ -174,10 +202,8 @@ const SonicShop = () => {
           </div>
         </div>
       )}
-
     </div>
-  )
-
+  );
 };
 
 export default SonicShop;

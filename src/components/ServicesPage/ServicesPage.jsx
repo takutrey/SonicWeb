@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCode, FaPaintBrush, FaMobileAlt } from 'react-icons/fa';
+import { FaCode, FaPaintBrush, FaMobileAlt, FaWrench, FaPlug, FaSatellite } from 'react-icons/fa';
 import { ArrowRight } from 'lucide-react';
 import '../ServicesPage/ServicesPage.css';
 
@@ -21,7 +21,26 @@ const services = [
     title: 'Mobile Development',
     description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
     icon: <FaMobileAlt size={40} className="servicepage-icon" />,
-  },
+  }, 
+  {
+    id: 4,
+    title: 'Infrastructure Cabling',
+    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
+    icon: <FaPlug size={40} className="servicepage-icon" />,
+  }, 
+  {
+    id: 5,
+    title: 'Wireless Solutions',
+    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
+    icon: <FaSatellite size={40} className="servicepage-icon" />,
+  }, 
+  {
+    id: 6,
+    title: 'Maintanance Contracts',
+    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
+    icon: <FaWrench size={40} className="servicepage-icon" />,
+  }
+
 ];
 
 const ServicesPage = () => {

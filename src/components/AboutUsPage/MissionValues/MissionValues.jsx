@@ -35,6 +35,7 @@ const MissionValues = () => {
   <div className="core-values-container">
     <div className="core-values-header-title">
       <h2>Our Core Values</h2>
+      <p>Our beliefs and main focus</p>
     </div>
     <div className="values-grid">
       <div className="values-card">
