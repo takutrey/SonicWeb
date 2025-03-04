@@ -1,59 +1,61 @@
+/* Hero Section */
 .hero-contact {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/free-vector/contact-us-concept-landing-page_52683-12860.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/free-vector/contact-us-concept-landing-page_52683-12860.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Adjust height to make it smaller */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  flex-direction: column;
+  padding: 20px; /* Add some padding to ensure content doesn't touch the edges */
 }
 
 .hero-contact-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  font-size: 2.5rem; /* Slightly reduce font size */
+  margin-bottom: 1rem;
 }
 
 .hero-contact-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .hero-contact-cta-button {
-    padding: 0.8rem 2rem;
-    background-color: #c00;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #c00;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
 }
 
 .hero-contact-cta-button:hover {
-    background-color: #007bff;
+  background-color: #007bff;
 }
 
 /* Social Icons */
 .social-icons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
-    transition: transform 0.3s, background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 /* Social Media Icon Colors */
@@ -63,35 +65,100 @@
 .linkedin { background: #0077b5; }
 
 .social-icon:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* Contact Section Layout */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.map-container {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.contact-form-container {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.contact-form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-container label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-form-container button.submit-btn {
+  background-color: #c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-form-container button.submit-btn:hover {
+  background-color: #007bff;
 }
 
 /* Map Section */
 .map-container {
-    padding: 2rem;
-    background-color: #f5f5f5;
-    text-align: center;
-  }
-  
-  .map-container h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.map-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.map-container p {
+  margin-bottom: 1.5rem;
+}
+
+.map-embed iframe {
+  width: 100%;
+  max-width: 1200px;  /* Set a max width for large screens */
+  height: 400px; /* You can adjust the height */
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
   }
 
-  .map-container p {
-    margin-bottom: 1.5rem;
+  .map-container, .contact-form-container {
+    padding: 0;
+    margin-bottom: 20px;
   }
-  
+
   .map-embed iframe {
-    width: 100%;
-    max-width: 1200px;  /* Set a max width for large screens */
-    height: 400px; /* You can adjust the height */
-    border: none;
+    height: 300px; /* Reduce the height on smaller screens */
   }
-  
-  @media (max-width: 768px) {
-    .map-embed iframe {
-      height: 300px; /* Reduce the height on smaller screens */
-    }
-  }
-  
+}

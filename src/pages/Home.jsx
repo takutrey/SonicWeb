@@ -5,6 +5,7 @@ import AboutUs from '../components/About/About.jsx'
 import Services from '../components/Services/Services.jsx'
 import StatisticsCounter from '../components/Counter/Counter.jsx'
 import Footer from '../components/Footer/Footer.jsx'
+import MainPartners from '../components/MainPartners/MainPartners.jsx'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
     <Header />
     <Hero />
     <AboutUs />
+    <MainPartners />
     <Services />
     <StatisticsCounter />
     <Footer />
