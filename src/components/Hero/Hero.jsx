@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import "../Hero/Hero.css"; // Importing the corresponding CSS file
 
 const textOptions = [
-  "Infrastructure Cabling",
-  "Wireless Solutions",
-  "Maintenance Contracts",
-  "Software Development",
+  "ICT Equipment and Accessories",
+  "Internet Service Solutions",
+  "CCTV and Intruder Alarm Systems",
+  "Boardroom Modernization",
+  "Digital Conferencing Solutions",
+  "Audio and Visual Systems", 
+  "Systems Auditing and Consultation"
 ];
 
 const TypingEffect = ({ textArray, speed = 100, delay = 1000 }) => {
@@ -78,7 +81,7 @@ const Hero = () => {
               <motion.path
                 key={index}
                 d={`M${startX},${startY} Q${controlX},${controlY} ${endX},${endY}`}
-                stroke={`rgba(0, 200, 255, ${0.5 + Math.random() * 0.5})`}
+                stroke={`rgba(204, 0, 0, ${0.5 + Math.random() * 0.5})`}
                 strokeWidth={2 + Math.random() * 2}
                 fill="transparent"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -103,7 +106,7 @@ const Hero = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          Sonic Signal
+          Sonicsignal Technologies
         </motion.h1>
         <motion.h2 
         className="hero-desc"

@@ -34,7 +34,7 @@
 }
 
 .hero-contact-cta-button:hover {
-  background-color: #007bff;
+  background-color: rgb(236, 48, 48);
 }
 
 /* Social Icons */
@@ -60,7 +60,7 @@
 
 /* Social Media Icon Colors */
 .facebook { background: #3b5998; }
-.twitter { background: #1da1f2; }
+.twitter { background: black; }
 .instagram { background: #e4405f; }
 .linkedin { background: #0077b5; }
 
@@ -122,7 +122,7 @@
 }
 
 .contact-form-container button.submit-btn:hover {
-  background-color: #007bff;
+  background-color: rgb(236, 48, 48);
 }
 
 /* Map Section */

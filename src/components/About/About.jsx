@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../About/About.css';
+import './About.css';
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const AboutUs = () => {
 
             <button 
               onClick={handleLearnMore}
-              className="about-button"
+              className="about-buttonn"
             >
               Learn More
             </button>

@@ -97,6 +97,7 @@
     width: 200px;
     background-color: #fff;
     transition: all 0.3s ease;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
 }
 
 .search-bar input:focus {
@@ -116,7 +117,7 @@
 
 .search-icon-btn {
     position: absolute;
-    right: 12px;
+    right: 15px; /* Increased padding for better positioning */
     top: 50%;
     transform: translateY(-50%);
     background: none;
@@ -214,16 +215,20 @@
         order: 2;
         width: calc(100% - 80px);
         margin: 15px 0 0 0;
+        position: relative; /* Ensure this is explicitly set */
     }
 
     .search-bar input {
-        width: 100%;
-        max-width: 300px;
+        width: 100%; /* Take full width of parent */
+        padding-right: 40px; /* Ensure there's always space for the icon */
+    }
+    .search-icon-btn {
+        right: 10px; /* This will now be relative to the input's right edge */
     }
 
     .search-bar input:focus {
         width: 100%;
-        max-width: 300px;
+        max-width: none;
     }
 }
 

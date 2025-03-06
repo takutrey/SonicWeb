@@ -1,44 +1,50 @@
 import React from 'react';
-import { FaCode, FaPaintBrush, FaMobileAlt, FaWrench, FaPlug, FaSatellite } from 'react-icons/fa';
-import { ArrowRight } from 'lucide-react';
+import { FaCode, FaPaintBrush, FaMobileAlt, FaWrench, FaPlug, FaSatellite, FaDesktop, FaCamera, FaCameraRetro, FaVideo, FaVolumeUp, FaUserTie, FaTools, FaWifi } from 'react-icons/fa';
+import { ArrowRight, Webcam } from 'lucide-react';
 import '../ServicesPage/ServicesPage.css';
 
 const services = [
   {
     id: 1,
-    title: 'Web Development',
-    description: 'We build responsive and scalable websites tailored to your business needs.',
-    icon: <FaCode size={40} className="servicepage-icon" />,
+    title: 'Systems Auditing and Consultation',
+    description: 'We specialize in comprehensive systems auditing and consultation services to help you optimize your IT infrastructure. Our expert team conducts thorough assessments to identify risks, inefficiencies, and areas for improvement in your systems.',
+    icon: <FaUserTie size={40} className="servicepage-icon" />,
   },
   {
     id: 2,
-    title: 'UI/UX Design',
-    description: 'Our team creates stunning, user-friendly designs that provide a seamless experience.',
-    icon: <FaPaintBrush size={40} className="servicepage-icon" />,
+    title: 'Audio and Visual Systems',
+    description: 'We provide cutting-edge audio and visual systems to elevate your event, workspace, or entertainment space. Our solutions include high-fidelity sound systems, immersive display technologies, and seamless integration for both indoor and outdoor environments.',
+    icon: <FaVolumeUp size={40} className="servicepage-icon" />,
   },
   {
     id: 3,
-    title: 'Mobile Development',
-    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
-    icon: <FaMobileAlt size={40} className="servicepage-icon" />,
+    title: 'Digital Conferencing Solutions',
+    description: 'We offer advanced digital conferencing solutions to facilitate seamless communication and collaboration. Our services include high-quality video conferencing systems, interactive displays, virtual meeting platforms, and integration with various communication tools.',
+    icon: <FaVideo size={40} className="servicepage-icon" />,
   }, 
   {
     id: 4,
-    title: 'Infrastructure Cabling',
-    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
-    icon: <FaPlug size={40} className="servicepage-icon" />,
+    title: 'Boardroom Modernization',
+    description: 'We specialize in boardroom modernization services, transforming your meeting spaces with the latest technology and innovative solutions from high-definition video conferencing systems and interactive displays to seamless integration with collaborative tools.',
+    icon: <FaDesktop size={40} className="servicepage-icon" />,
   }, 
   {
     id: 5,
-    title: 'Wireless Solutions',
-    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
-    icon: <FaSatellite size={40} className="servicepage-icon" />,
+    title: 'CCTV and Intruder Alarm Systems',
+    description: 'We provide state-of-the-art CCTV and intruder alarm systems designed to enhance the security of your premises. Our solutions include high-definition cameras, motion detection sensors, real-time monitoring, and remote access capabilities.',
+    icon: <Webcam size={40} className="servicepage-icon" />,
   }, 
   {
     id: 6,
-    title: 'Maintanance Contracts',
-    description: 'We develop mobile apps for iOS and Android with a focus on performance and user experience.',
-    icon: <FaWrench size={40} className="servicepage-icon" />,
+    title: 'Internet Service Solutions',
+    description: "We provide reliable and high-speed internet service solutions tailored to meet your business or personal needs. Whether you're looking for broadband, wireless, or fiber-optic services, our team ensures seamless connectivity with consistent speeds and excellent customer support.",
+    icon: <FaWifi size={40} className="servicepage-icon" />,
+  }, 
+  {
+    id: 6,
+    title: 'ICT Equipment and Accessories',
+    description: 'We offer comprehensive ICT equipment and accessories services to ensure your technology runs smoothly. From maintenance and repairs to installations and upgrades, our expert team is here to support your computers, networking devices, printers, and accessories.',
+    icon: <FaTools size={40} className="servicepage-icon" />,
   }
 
 ];
@@ -70,9 +76,6 @@ const ServicesPage = () => {
               <div className="servicepage-icon-wrapper">{service.icon}</div>
               <h3 className="servicepage-card-title">{service.title}</h3>
               <p className="servicepage-card-description">{service.description}</p>
-              <button className="servicepage-button">
-                Read More <ArrowRight size={16} />
-              </button>
             </div>
           ))}
         </div>

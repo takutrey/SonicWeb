@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import {FaXTwitter} from 'react-icons/fa6';
 import '../Contact/ContactUs.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -27,11 +28,11 @@ const Contact = () => {
           <a href="mailto:info@sonicsignals.co.zw" className="hero-contact-cta-button">Get in Touch</a>
 
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
+            <a href="https://www.facebook.com/SONICSIGNALSTECH" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
               <FaFacebookF />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-              <FaTwitter />
+              <FaXTwitter />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon instagram">
               <FaInstagram />

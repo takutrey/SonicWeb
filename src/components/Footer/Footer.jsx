@@ -47,7 +47,7 @@ const Footer = () => {
 
       </div>
       <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} SonicSignal Technologies. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sonicsignal Technologies. All rights reserved.</p>
         </div>
     </footer>
   )

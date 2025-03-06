@@ -91,7 +91,7 @@
   }
   
   .servicepage-icon {
-    color: #007bff;
+    color: #c00;
   }
   
   /* Title & Description */
@@ -113,7 +113,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.8rem 1.5rem;
-    background-color: #007bff;
+    background-color: #c00;
     color: white;
     border: none;
     border-radius: 5px;
@@ -124,6 +124,6 @@
   }
   
   .servicepage-button:hover {
-    background-color: #0056b3;
+    background-color: #f40928;
   }
   

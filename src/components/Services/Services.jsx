@@ -1,12 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  Plug,
-  Wrench,
-  Globe, 
   ArrowRight
 } from 'lucide-react';
 import '../Services/Services.css'; 
+import { FaSearch, FaTools, FaUserTie, FaWifi } from 'react-icons/fa';
 
 
 
@@ -19,20 +17,20 @@ const handleMoreServices = () => {
 }
   const services = [
     {
-      icon: <Plug className="text-blue-600" />,
-      title: "Infrastructure Cabling",
-      description:"Our solutions cover all aspects of IT and telecommunication infrastructure cabling projects across local and wide area networks – from full, multi-site installations to moving existing floor points within your office.",
+      icon: <FaTools className="services-icon" />,
+      title: "ICT Equipment and Accessories",
+      description:"We offer comprehensive ICT equipment and accessories services to ensure your technology runs smoothly. From maintenance and repairs to installations and upgrades, our expert team is here to support your computers, networking devices, printers, and accessories.",
     },
    
     {
-      icon: <Globe className="text-purple-600" />,
-      title: "Wireless Solutions",
-      description: "We advise on defining wireless strategy, choosing the appropriate technologies & architecture for an efficient ROI, procurement, network design & deployment processes for enterprises, ISPs, councils, MHOs & more!",
+      icon: <FaWifi className="services-icon" />,
+      title: "Internet Service Solutions",
+      description: "We provide reliable and high-speed internet service solutions tailored to meet your business or personal needs. Whether you're looking for broadband, wireless, or fiber-optic services, our team ensures seamless connectivity with consistent speeds and excellent customer support.",
     },
     {
-      icon: <Wrench className="text-orange-600" />,
-      title: "Maintanance Contracts",
-      description: "Our maintenance contracts offer a cost effective, monthly payment solution for your IT requirements, regular checks on your servers, workstations, networks and printers to ensure they are running smoothly & efficiently.",
+      icon: <FaUserTie className="services-icon" />,
+      title: "Systems Auditing and Consultation",
+      description: "We specialize in comprehensive systems auditing and consultation services to help you optimize your IT infrastructure. Our expert team conducts thorough assessments to identify risks, inefficiencies, and areas for improvement in your systems.",
     }
   ];
 
@@ -43,7 +41,8 @@ const handleMoreServices = () => {
           <h2 className="services-title">Our Services</h2>
           <p className="services-subtitle">Discover what we can do for you</p>
         </div>
-        
+      
+      <div className="services-scroll-wrapper">
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="service-card">
@@ -52,12 +51,9 @@ const handleMoreServices = () => {
               </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
-              <button className="service-button">
-                Read More
-                <ArrowRight />
-              </button>
             </div>
           ))}
+        </div>
         </div>
         <div className="more-services-button">
           <button onClick={handleMoreServices} className="service-button">

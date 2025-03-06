@@ -1,30 +1,27 @@
 .partners-carousel {
-    width: 100%;
-    overflow: hidden;
-    background: #f8f8f8;
-    padding: 20px 0;
-    white-space: nowrap;
-    position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.partners-track {
+  display: flex;
+  gap: 10%;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;/* Prevent wrapping */
+}
+
+.partner-logo {
+  width: 150px;
+  margin: 10px;
+  object-fit: contain;
+  flex-shrink: 0; 
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
-  
-  .partners-track {
-    display: flex;
-    gap: 30px;
-    animation: scroll 15s linear infinite;
-    width: max-content;
+  100% {
+    transform: translateX(-100%); /* Move to the end of the first set of logos */
   }
-  
-  .partner-logo {
-    height: 60px; /* Adjust as needed */
-    object-fit: contain;
-  }
-  
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  
+}

@@ -90,8 +90,8 @@
     border-radius: 0.5rem;
     font-weight: 500;
     transition: all 0.3s ease;
-    border: 2px solid #3b82f6;
-    color: #3b82f6;
+    border: 2px solid #c00;
+    color: #c00;
     background: transparent;
     width: fit-content;
     margin: 0 auto;
@@ -99,13 +99,17 @@
   }
   
   .service-button:hover {
-    background: #3b82f6;
+    background: #c00;
     color: white;
     transform: translateX(5px);
   }
   
   .service-button svg {
     transition: transform 0.3s ease;
+  }
+
+  .services-icon {
+    color: #c00;
   }
   
   .service-button:hover svg {
