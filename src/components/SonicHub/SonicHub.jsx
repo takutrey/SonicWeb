@@ -6,7 +6,7 @@ import blogData from '../../data/blog.json';
 function SonicHub() {
   const [blogPosts, setBlogPosts] = useState(blogData);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 1;
+  const postsPerPage = 6;
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Get current posts to display based on pagination
@@ -89,8 +89,9 @@ function SonicHub() {
                 <p className="sonichub-blog-card-excerpt">{post.excerpt}</p>
                 <div className="sonichub-blog-card-meta">
                   <div className="sonichub-blog-card-meta-item">
-                    <span className="sonichub-blog-card-meta-icon">🕒</span> {post.readTime}
+                  <span className="sonichub-blog-card-meta-icon">📅</span> {post.date}
                   </div>
+                 
                   <div className="sonichub-blog-card-meta-item">
                     <span className="sonichub-blog-card-meta-icon">👤</span> {post.author}
                   </div>

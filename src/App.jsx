@@ -7,6 +7,7 @@ import Hub from "./pages/Hub.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import SingleProduct from "./components/SingleProduct/SingleProduct.jsx";
 import SingleBlog from "./components/SingleBlog/SingleBlog.jsx";
+import blogData from './data/blog.json'; 
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       <Route path="/blog" element={<Hub />} />
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/product/:productId" element={<SingleProduct />} />
-      <Route path="/post/:id" component={<SingleBlog />} />
+      <Route path="/post/:id" element={<SingleBlog blogs={blogData} />} />
     </Routes>
   );
 }

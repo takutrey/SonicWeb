@@ -1,30 +1,167 @@
 [
-    {
-      "id": 1,
-      "category": "Technology",
-      "title": "The Future of AI in Marketing",
-      "excerpt": "Artificial Intelligence is revolutionizing the marketing industry...",
-      "image": "https://img.freepik.com/free-photo/medium-shot-man-with-vr-glasses_23-2148883495.jpg?t=st=1741602174~exp=1741605774~hmac=79744301dd52fc9764f83e3f099f4c74be9824eb7d8e0cd9e61db4d74a46edbc&w=1800",
-      "author": "John Doe",
-      "readTime": "5 min"
-    },
-    {
-      "id": 2,
-      "category": "Business",
-      "title": "How to Build a Successful Startup",
-      "excerpt": "Building a startup from the ground up is no easy task...",
-      "image": "https://img.freepik.com/free-photo/young-businessmen-standing-together-holding-laptop-discussing-business_181624-46531.jpg?t=st=1741602240~exp=1741605840~hmac=4ceb37d52309b94c2897200d46cb5db83acb46ab40df352ce10982feee182daa&w=1800",
-      "author": "Jane Smith",
-      "readTime": "8 min"
-    },
-    {
-      "id": 3,
-      "category": "Design",
-      "title": "UI/UX Best Practices for 2025",
-      "excerpt": "In the ever-evolving field of UI/UX design...",
-      "image": "https://img.freepik.com/free-photo/medium-shot-man-designing-websites_23-2149930943.jpg?t=st=1741602317~exp=1741605917~hmac=142046b7c4a9171b94e9b9aa55c6bdca5f5ea0183d2b5ea73781043e507ba35a&w=1800",
-      "author": "Sarah Lee",
-      "readTime": "6 min"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "category": "Technology",
+    "title": "The Future of AI in Marketing",
+    "excerpt": "Artificial Intelligence is revolutionizing the marketing industry...",
+    "content": "AI is transforming how marketers analyze consumer behavior, optimize campaigns, and personalize customer experiences. With machine learning, AI can predict trends and automate repetitive tasks, leading to improved efficiency and more targeted marketing strategies.",
+    "date": "2025-03-10",
+    "image": "https://img.freepik.com/free-photo/medium-shot-man-with-vr-glasses_23-2148883495.jpg?t=st=1741602174~exp=1741605774~hmac=79744301dd52fc9764f83e3f099f4c74be9824eb7d8e0cd9e61db4d74a46edbc&w=1800",
+    "author": "John Doe",
+    "readTime": "5 min"
+  },
+  {
+    "id": 2,
+    "category": "Business",
+    "title": "How to Build a Successful Startup",
+    "excerpt": "Building a startup from the ground up is no easy task...",
+    "content": "Starting a business involves more than just an idea. It requires market research, understanding customer needs, and building a resilient team. In this article, we explore the key strategies for creating a startup that can thrive in today's competitive environment.",
+    "date": "2025-03-09",
+    "image": "https://img.freepik.com/free-photo/young-businessmen-standing-together-holding-laptop-discussing-business_181624-46531.jpg?t=st=1741602240~exp=1741605840~hmac=4ceb37d52309b94c2897200d46cb5db83acb46ab40df352ce10982feee182daa&w=1800",
+    "author": "Jane Smith",
+    "readTime": "8 min"
+  },
+  {
+    "id": 3,
+    "category": "Design",
+    "title": "UI/UX Best Practices for 2025",
+    "excerpt": "In the ever-evolving field of UI/UX design...",
+    "content": "With rapid technological advancements, UI/UX design is becoming more crucial in determining user satisfaction. In 2025, the focus is on accessibility, minimalism, and creating intuitive experiences that respond to user needs across various devices.",
+    "date": "2025-03-08",
+    "image": "https://img.freepik.com/free-photo/medium-shot-man-designing-websites_23-2149930943.jpg?t=st=1741602317~exp=1741605917~hmac=142046b7c4a9171b94e9b9aa55c6bdca5f5ea0183d2b5ea73781043e507ba35a&w=1800",
+    "author": "Sarah Lee",
+    "readTime": "6 min"
+  },
+  {
+    "id": 4,
+    "category": "Technology",
+    "title": "Blockchain Beyond Cryptocurrency",
+    "excerpt": "Blockchain technology is not just for Bitcoin anymore...",
+    "content": "Blockchain is being utilized in a variety of industries beyond finance, including healthcare, supply chain management, and voting systems. It ensures transparency, security, and decentralization, paving the way for a more trustworthy digital future.",
+    "date": "2025-03-07",
+    "image": "https://img.freepik.com/free-photo/close-up-photo-cryptocurrency-concept_23-2148945675.jpg?t=st=1741602692~exp=1741606492~hmac=1c8d4b2f23487c7590d6d7038ad157f3006c45373b3c2e57b9c07ac9a9fa2c2c&w=1800",
+    "author": "David Kim",
+    "readTime": "7 min"
+  },
+  {
+    "id": 5,
+    "category": "Business",
+    "title": "Maximizing Your Startup's Potential with Digital Marketing",
+    "excerpt": "In the digital age, marketing strategies can make or break a startup...",
+    "content": "Digital marketing provides startups with the opportunity to reach a global audience through various platforms. From SEO to social media marketing, this article outlines how startups can leverage online tools to drive traffic, engage customers, and build a brand.",
+    "date": "2025-03-06",
+    "image": "https://img.freepik.com/free-photo/business-team-concept-working-office_23-2148873502.jpg?t=st=1741601998~exp=1741605798~hmac=5c847622fe5c56322045b5c3e3c0cf01ba406e7c2eeb939f68b558b7f531d4ea&w=1800",
+    "author": "Alice Green",
+    "readTime": "9 min"
+  },
+  {
+    "id": 6,
+    "category": "Design",
+    "title": "The Importance of Color in UI/UX Design",
+    "excerpt": "Color choices can impact user behavior and perception...",
+    "content": "Color plays a significant role in shaping the user's emotional connection to a product or service. In UI/UX design, selecting the right colors enhances user experience, influences decisions, and builds brand identity.",
+    "date": "2025-03-05",
+    "image": "https://img.freepik.com/free-photo/colorful-palette-with-various-paint-samples_23-2147856722.jpg?t=st=1741601889~exp=1741605689~hmac=8b2d9e8e4b0575d33ea4600a855b69f0c45b015f69c249918b7089da4fa351f9&w=1800",
+    "author": "Emily Davis",
+    "readTime": "6 min"
+  },
+  {
+    "id": 7,
+    "category": "Technology",
+    "title": "Quantum Computing: The Next Big Leap",
+    "excerpt": "Quantum computing promises to solve problems beyond the reach of traditional computers...",
+    "content": "Quantum computers utilize quantum bits, or qubits, which can perform calculations at speeds unimaginable for today's machines. This breakthrough technology holds the potential to revolutionize fields like cryptography, drug discovery, and artificial intelligence.",
+    "date": "2025-03-04",
+    "image": "https://img.freepik.com/free-photo/abstract-blue-technology-background-with-qubits_23-2148904925.jpg?t=st=1741602329~exp=1741606129~hmac=3a561c3bc443a83240c12b63b6f63f0789f9fe378fd287fa8e67b212481add84&w=1800",
+    "author": "George T. Watson",
+    "readTime": "10 min"
+  },
+  {
+    "id": 8,
+    "category": "Business",
+    "title": "E-commerce Trends to Watch in 2025",
+    "excerpt": "The e-commerce industry is continuously evolving...",
+    "content": "In 2025, e-commerce is moving towards more personalized and interactive experiences. With the rise of AI, augmented reality, and faster delivery options, consumers expect seamless, customized shopping journeys. Here's what businesses should focus on to stay ahead.",
+    "date": "2025-03-03",
+    "image": "https://img.freepik.com/free-photo/smiling-businessman-using-tablet-while-shopping_23-2147884230.jpg?t=st=1741601183~exp=1741604983~hmac=3c56c8a9e6f5f02a13e7349ab64b0e15656cbe8bbac00e6a98174b38936b8a5d&w=1800",
+    "author": "Olivia Walker",
+    "readTime": "8 min"
+  },
+  {
+    "id": 9,
+    "category": "Design",
+    "title": "Responsive Web Design for a Mobile-First World",
+    "excerpt": "Mobile-first design is no longer optional...",
+    "content": "In an era where most users access websites through their mobile devices, responsive web design ensures that sites look great and function properly across all screen sizes. Learn how to build mobile-first websites that perform optimally on smartphones and tablets.",
+    "date": "2025-03-02",
+    "image": "https://img.freepik.com/free-photo/businessman-working-laptop-while-checking-smartphone_23-2147876062.jpg?t=st=1741601227~exp=1741605027~hmac=fd8e7e7d0ab84a423cc9735f9a7b99f4db0f8bcb338cddef8f31f0d93e2ac8fd&w=1800",
+    "author": "Lucas Brown",
+    "readTime": "7 min"
+  },
+  {
+    "id": 10,
+    "category": "Technology",
+    "title": "The Impact of 5G on Digital Transformation",
+    "excerpt": "5G is set to revolutionize the digital landscape...",
+    "content": "The rollout of 5G networks will accelerate digital transformation across industries. With faster speeds, lower latency, and increased connectivity, 5G will enable innovations in areas like IoT, autonomous vehicles, and virtual reality.",
+    "date": "2025-03-01",
+    "image": "https://img.freepik.com/free-photo/abstract-background-with-glowing-lines_23-2147485512.jpg?t=st=1741601554~exp=1741605354~hmac=e35b208c70f0351f72d8e7f99d592fc94a60b7a94c5a017c18a4f97aab7f00bb&w=1800",
+    "author": "Ethan Wright",
+    "readTime": "6 min"
+  },
+  {
+    "id": 11,
+    "category": "Business",
+    "title": "The Power of Networking for Entrepreneurs",
+    "excerpt": "Networking is a key driver for entrepreneurial success...",
+    "content": "Networking isn't just about exchanging business cards; it's about building lasting relationships. Successful entrepreneurs leverage their networks to gain insights, find opportunities, and collaborate on projects. Learn how to network effectively in the digital age.",
+    "date": "2025-02-28",
+    "image": "https://img.freepik.com/free-photo/businessman-communicating-with-colleagues_23-2147897863.jpg?t=st=1741601940~exp=1741605740~hmac=f06fd03e986b8552d1fd49d9b8e64f983dfac4f4e34f9f3b56a5c3c21e9a4f68&w=1800",
+    "author": "Michael Johnson",
+    "readTime": "5 min"
+  },
+  {
+    "id": 12,
+    "category": "Design",
+    "title": "Creating Seamless User Experiences",
+    "excerpt": "User experience (UX) is at the core of digital product success...",
+    "content": "A seamless user experience is essential to customer satisfaction and retention. This article explores key principles for designing interfaces that are intuitive, easy to navigate, and provide users with a positive experience at every touchpoint.",
+    "date": "2025-02-27",
+    "image": "https://img.freepik.com/free-photo/designers-working-computer-laptop_23-2147896451.jpg?t=st=1741601513~exp=1741605313~hmac=5746eb51707fe17feea0760f010d78c2b515a95ca78f0890d0aaf0ab57d7a26e&w=1800",
+    "author": "Sophia Mitchell",
+    "readTime": "7 min"
+  },
+  {
+    "id": 13,
+    "category": "Technology",
+    "title": "Augmented Reality: Transforming Industries",
+    "excerpt": "Augmented reality (AR) is enhancing both entertainment and enterprise...",
+    "content": "From gaming to education and healthcare, AR is providing immersive experiences that were once unimaginable. Businesses are adopting AR technology to engage customers, train employees, and enhance product demonstrations.",
+    "date": "2025-02-26",
+    "image": "https://img.freepik.com/free-photo/augmented-reality-experience-technology-concept_23-2147891070.jpg?t=st=1741602214~exp=1741606014~hmac=2a83633e2f0b0dcb54d42b94c26b4d8e4d708cf0e9a3d33bb5a4c27d00a4a2e4&w=1800",
+    "author": "Liam Scott",
+    "readTime": "8 min"
+  },
+  {
+    "id": 14,
+    "category": "Business",
+    "title": "How to Create a Winning Business Plan",
+    "excerpt": "A solid business plan is essential for securing funding and guiding growth...",
+    "content": "This article walks you through the critical components of a business plan, from market analysis to financial projections, helping you present your startup in the best light to investors and partners.",
+    "date": "2025-02-25",
+    "image": "https://img.freepik.com/free-photo/business-plan-concept-closeup-photo_23-2147939784.jpg?t=st=1741601542~exp=1741605342~hmac=22c9f7363887f6cc682ef8f438a9fe943f88cb47ad825c62e6c77f0d0b3a2575&w=1800",
+    "author": "Isabella Taylor",
+    "readTime": "6 min"
+  },
+  {
+    "id": 15,
+    "category": "Technology",
+    "title": "The Rise of Internet of Things (IoT)",
+    "excerpt": "The Internet of Things (IoT) is creating smarter cities and businesses...",
+    "content": "IoT is revolutionizing how devices communicate and interact with each other. By connecting everyday objects to the internet, IoT enables automation, real-time data collection, and efficient resource management. In the coming years, IoT will become an integral part of daily life.",
+    "date": "2025-02-24",
+    "image": "https://img.freepik.com/free-photo/internet-things-iot-connected-tech-smart-home_23-2147762284.jpg?t=st=1741601603~exp=1741605403~hmac=45b5c3b1efbf1f255a12c2c3e874d54b187fb4c6e869bd9a77e93d149b5603f3&w=1800",
+    "author": "Oliver King",
+    "readTime": "7 min"
+  }
+]

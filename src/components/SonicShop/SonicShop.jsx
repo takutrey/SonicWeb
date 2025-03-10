@@ -5,8 +5,8 @@ import { toast } from 'sonner';
 import { useCart } from "../../store/useCart";
 import productsData from "../../data/products.json";
 import { Link } from "react-router-dom";
+import {AllProducts} from '../../lib/products.jsx';
 
-const categories = Array.from(new Set(productsData.map(product => product.category)));
 
 const SonicShop = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -16,6 +16,22 @@ const SonicShop = () => {
   const [itemsPerPage, setItemsPerPage] = useState(12);
   const [minPrice, setMinPrice] = useState(0); 
   const [maxPrice, setMaxPrice] = useState(500);
+  const [productRecord, setProductRecord] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  async function fetchProducts() {
+    try {
+      const response = await AllProducts();
+      setProductRecord(Array.isArray(response.data) ? response.data : []);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const categories = Array.from(new Set(productRecord.map(product => product?.category.name)));
 
   const { items, addItem, removeItem, updateQuantity } = useCart();
 
@@ -25,9 +41,9 @@ const SonicShop = () => {
   };
 
   const filteredProducts = useMemo(() => {
-    return productsData.filter(product => {
+    return productRecord.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || product.description.toLowerCase().includes(searchQuery.toLowerCase()); 
-      const matchesCategory = !selectedCategory || product.category === selectedCategory; 
+      const matchesCategory = !selectedCategory || product?.category.name === selectedCategory; 
       const matchesPriceRange = product.price >= minPrice && product.price <= maxPrice;  // Price range filter
       return matchesSearch && matchesCategory && matchesPriceRange;
     });
@@ -128,7 +144,7 @@ const SonicShop = () => {
                       <h3 className="product-name">{product.name}</h3>
                     </Link>
                     <p className="product-description">{product.description}</p>
-                    <p className="product-category">{product.category}</p>
+                    <p className="product-category">{product?.category.name}</p>
                     <div className="product-footer">
                       <span className="product-price">${product.price.toFixed(2)}</span> 
                       <button onClick={() => handleAddToCart(product)} className="add-to-cart-button" disabled={items.some(item => item.id === product.id)}>
