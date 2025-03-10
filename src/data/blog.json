@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "category": "Technology",
+      "title": "The Future of AI in Marketing",
+      "excerpt": "Artificial Intelligence is revolutionizing the marketing industry...",
+      "image": "https://img.freepik.com/free-photo/medium-shot-man-with-vr-glasses_23-2148883495.jpg?t=st=1741602174~exp=1741605774~hmac=79744301dd52fc9764f83e3f099f4c74be9824eb7d8e0cd9e61db4d74a46edbc&w=1800",
+      "author": "John Doe",
+      "readTime": "5 min"
+    },
+    {
+      "id": 2,
+      "category": "Business",
+      "title": "How to Build a Successful Startup",
+      "excerpt": "Building a startup from the ground up is no easy task...",
+      "image": "https://img.freepik.com/free-photo/young-businessmen-standing-together-holding-laptop-discussing-business_181624-46531.jpg?t=st=1741602240~exp=1741605840~hmac=4ceb37d52309b94c2897200d46cb5db83acb46ab40df352ce10982feee182daa&w=1800",
+      "author": "Jane Smith",
+      "readTime": "8 min"
+    },
+    {
+      "id": 3,
+      "category": "Design",
+      "title": "UI/UX Best Practices for 2025",
+      "excerpt": "In the ever-evolving field of UI/UX design...",
+      "image": "https://img.freepik.com/free-photo/medium-shot-man-designing-websites_23-2149930943.jpg?t=st=1741602317~exp=1741605917~hmac=142046b7c4a9171b94e9b9aa55c6bdca5f5ea0183d2b5ea73781043e507ba35a&w=1800",
+      "author": "Sarah Lee",
+      "readTime": "6 min"
+    }
+  ]
+  

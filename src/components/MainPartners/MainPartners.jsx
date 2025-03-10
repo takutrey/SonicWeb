@@ -1,17 +1,19 @@
 import React from 'react'; 
 import '../MainPartners/MainPartners.css';
-import NetoneLogo from '../../assets/images/netone.png';
-import SKLogo from '../../assets/images/sterkinekor.png'; 
-import HarareLogo from '../../assets/images/Coat_of_arms_of_Harare.svg.png'; 
-import PizzaHutLogo from '../../assets/images/Pizza_Hut_logo.svg.webp';
+import CISCO from '../../assets/images/Partners/CISCO.png';
+import CSZ from '../../assets/images/Partners/CSZ.jpg'; 
+import IBM from '../../assets/images/Partners/IBM.jpg'; 
+import Ubiquiti from '../../assets/images/Partners/Ubiquiti.png';
+import Molex from '../../assets/images/Partners/Molex.png';
 
 const MainPartners = () => { 
 
     const Partners = [    
-        NetoneLogo,
-        SKLogo,
-        HarareLogo, 
-        PizzaHutLogo      
+        CSZ,
+        CISCO,
+        IBM, 
+        Ubiquiti, 
+        Molex    
     ];
 
   return (

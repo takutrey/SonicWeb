@@ -20,17 +20,20 @@ const Footer = () => {
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/services">Services</Link></li>
             <li><Link to="/shop">SonicShop</Link></li>
+            <li><Link to="/blog">SonicHub</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
           </ul>
         </div>
         <div className="footer-links">
           <h3>Services</h3>
           <ul>
-            <li><Link to="/">Infrastructure Cabling</Link></li>
-            <li><Link to="/about">Software Development</Link></li>
-            <li><Link to="/services">Wireless Solutions</Link></li>
-            <li><Link to="/shop">Tech Consultancy</Link></li>
-            <li><Link to="/sonichub">Maintenance Contracts</Link></li>
+            <li><Link to="/services">Internet Service Solutions</Link></li>
+            <li><Link to="/services">Systems Auditing and Consultation</Link></li>
+            <li><Link to="/services">ICT Equipment and Accessories</Link></li>
+            <li><Link to="/services">Audio and Visual Systems</Link></li>
+            <li><Link to="/services">Digital Conferencing Solutions</Link></li>
+            <li><Link to="/services">Boardroom Modernization</Link></li>
+
           </ul>
         </div>
 

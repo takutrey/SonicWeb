@@ -1,0 +1,27 @@
+.partners-carousel {
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .partners-track {
+    display: flex;
+    gap: 10%;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;/* Prevent wrapping */
+  }
+  
+  .partner-logo {
+    width: 150px;
+    margin: 10px;
+    object-fit: contain;
+    flex-shrink: 0; 
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%); /* Move to the end of the first set of logos */
+    }
+  }

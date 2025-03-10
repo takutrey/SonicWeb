@@ -36,6 +36,7 @@ const Header = () => {
               <Link to="/about"  className={isActive("/about")}onClick={toggleMenu}>About Us</Link>
               <Link to="/services"  className={isActive("/services")}onClick={toggleMenu}>Services</Link>
               <Link to="/shop"  className={isActive("/shop")}onClick={toggleMenu}>SonicShop</Link>
+              <Link to="/blog" className={isActive("/blog")}onClick={toggleMenu}>SonicHub</Link>
               <Link to="/contact"  className={isActive("/contact")}onClick={toggleMenu}>Contact Us</Link>
             </nav>
     
