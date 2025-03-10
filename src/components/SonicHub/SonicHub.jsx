@@ -9,6 +9,7 @@ function SonicHub() {
   const postsPerPage = 6;
   const [isLoaded, setIsLoaded] = useState(false);
 
+
   // Get current posts to display based on pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -32,6 +33,12 @@ function SonicHub() {
   if (blogPosts.length === 0) {
     return <div>No blog posts available.</div>;
   }
+
+  const formatDateToWords = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+  };
 
   return (
     <div className="sonichub-container">
@@ -89,7 +96,7 @@ function SonicHub() {
                 <p className="sonichub-blog-card-excerpt">{post.excerpt}</p>
                 <div className="sonichub-blog-card-meta">
                   <div className="sonichub-blog-card-meta-item">
-                  <span className="sonichub-blog-card-meta-icon">📅</span> {post.date}
+                  <span className="sonichub-blog-card-meta-icon">📅</span> {formatDateToWords(post.date)}
                   </div>
                  
                   <div className="sonichub-blog-card-meta-item">
