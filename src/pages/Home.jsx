@@ -7,6 +7,7 @@ import StatisticsCounter from '../components/Counter/Counter.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 import MainPartners from '../components/MainPartners/MainPartners.jsx'
 
+
 const Home = () => {
   return (
     <>

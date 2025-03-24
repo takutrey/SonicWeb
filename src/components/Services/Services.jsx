@@ -4,24 +4,22 @@ import {
   ArrowRight
 } from 'lucide-react';
 import '../Services/Services.css'; 
-import { FaSearch, FaTools, FaUserTie, FaWifi } from 'react-icons/fa';
-
-
+import { FaTools, FaUserTie, FaWifi } from 'react-icons/fa';
 
 const Services = () => {
 
   const navigate = useNavigate();
 
-const handleMoreServices = () => {
-  navigate("/services")
-}
+  const handleMoreServices = () => {
+    navigate("/services")
+  }
+
   const services = [
     {
       icon: <FaTools className="services-icon" />,
       title: "ICT Equipment and Accessories",
       description:"We offer comprehensive ICT equipment and accessories services to ensure your technology runs smoothly. From maintenance and repairs to installations and upgrades, our expert team is here to support your computers, networking devices, printers, and accessories.",
     },
-   
     {
       icon: <FaWifi className="services-icon" />,
       title: "Internet Service Solutions",
@@ -42,19 +40,19 @@ const handleMoreServices = () => {
           <p className="services-subtitle">Discover what we can do for you</p>
         </div>
       
-      <div className="services-scroll-wrapper">
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div key={index} className="service-card">
-              <div className="service-icon">
-                {service.icon}
+        
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <div key={index} className="service-card">
+                <div className="service-icon">
+                  {service.icon}
+                </div>
+                <h3 className="service-title">{service.title}</h3>
+                <p className="service-description">{service.description}</p>
               </div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-            </div>
-          ))}
-        </div>
-        </div>
+            ))}
+          </div>
+        
         <div className="more-services-button">
           <button onClick={handleMoreServices} className="service-button">
             More Services <ArrowRight />

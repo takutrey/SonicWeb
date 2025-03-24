@@ -1,105 +1,180 @@
-/* AnimatedCounter.css */
+/* Container for the stats section */
 .stats-container {
-    background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
-    padding: 4rem 1rem;
-    min-height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
+  padding: 4rem 1rem;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper for the stat cards */
+.stats-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexibility for responsiveness */
+  gap: 4rem;
+  padding: 1rem;
+}
+
+/* Styling for each stat card */
+.stat-card-link {
+  text-decoration: none;
+}
+
+.stat-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 220px;
+  cursor: pointer;
+  transition: transform 0.6s ease-in-out; /* Smooth transition for the flip effect */
+}
+
+/* Front side of the card */
+.stat-front,
+.stat-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Prevents the back side from being visible when flipped */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: transform 0.6s ease-in-out; /* Smooth flip effect */
+}
+
+/* Front card style */
+.stat-front {
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Back card style */
+.stat-back {
+  background: #c00;
+  transform: rotateY(180deg); /* Initially rotated to be hidden */
+}
+
+.stat-back p{
+  color: white;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.stat-back-button{
+  background: white;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem ;
+  border: #c00;
+  text-decoration: none;
+}
+
+.stat-back-button:hover{
+ transform: scale(1.2);
+ cursor: pointer;
+}
+
+/* Hover effect to flip the card */
+.stat-card:hover .stat-front {
+  transform: rotateY(180deg);
+}
+
+.stat-card:hover .stat-back {
+  transform: rotateY(0deg);
+}
+
+/* Icon wrapper in the card */
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+}
+
+/* Icon size */
+.stats-icon {
+  width: 40px;
+  height: 40px;
+  color: #c00;
+}
+
+/* The counter value (number) styling */
+.counter-value {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgb(12, 11, 11);
+  line-height: 1.2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Label under the counter */
+.stat-label {
+  font-size: 1.125rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.stat-operating-years-counter {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #666666;
+  margin-bottom: 40px;
+}
+
+/* Text to indicate the card's clickable nature */
+.click-text {
+  font-size: 0.9rem;
+  color: #c00;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .stats-wrapper {
-    max-width: 1200px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
   }
-  
-  .stat-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
-  }
-  
-  .stats-icon {
-    width: 40px;
-    height: 40px;
-    color: #c00;
-  }
-  
+
   .counter-value {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: rgb(12, 11, 11);
-    line-height: 1.2;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.5rem;
   }
-  
+
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .stats-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-container {
+    padding: 2rem 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .counter-value {
+    font-size: 2rem;
+  }
+
   .stat-label {
-    font-size: 1.125rem;
-    color: #64748b;
-    font-weight: 500;
+    font-size: 1rem;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .stats-wrapper {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-  
-    .counter-value {
-      font-size: 2.5rem;
-    }
-  
-    .icon-wrapper {
-      width: 60px;
-      height: 60px;
-    }
-  
-    .stats-icon {
-      width: 30px;
-      height: 30px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .stats-container {
-      padding: 2rem 1rem;
-    }
-  
-    .stat-card {
-      padding: 1.5rem;
-    }
-  
-    .counter-value {
-      font-size: 2rem;
-    }
-  
-    .stat-label {
-      font-size: 1rem;
-    }
-  }
+}

@@ -4,7 +4,7 @@
       url('https://img.freepik.com/free-vector/team-work-meeting-flat-style_23-2147780667.jpg?t=st=1740655190~exp=1740658790~hmac=e4ec7f146479053683780757a919eb86679baf390bddfe6bbdaefa564f70d87d&w=1060');
     background-size: cover;
     background-position: center;
-    height: 50vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,6 +87,8 @@
   
   /* Icons */
   .servicepage-icon-wrapper {
+    color: #c00;
+    font-size: 40px;
     margin-bottom: 1rem;
   }
   
@@ -127,3 +129,12 @@
     background-color: #f40928;
   }
   
+
+  .services-page-link{
+    text-decoration: none;
+    color: black;
+  } 
+
+  .services-page-link:hover{
+    color: #c00;
+  }

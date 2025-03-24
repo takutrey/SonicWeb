@@ -1,0 +1,68 @@
+
+  [
+    {
+      "id": 1,
+      "title": "Systems Auditing and Consultation",
+      "description": "We specialize in comprehensive systems auditing and consultation services to help you optimize your IT infrastructure. Our expert team conducts thorough assessments to identify risks, inefficiencies, and areas for improvement in your systems.",
+      "content": "Our systems auditing process involves a detailed evaluation of your IT landscape, ensuring compliance with industry standards and security protocols. We provide in-depth reports and strategic recommendations tailored to your organization's needs.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "FaUserTie"
+    },
+    {
+      "id": 2,
+      "title": "Audio and Visual Systems",
+      "description": "We provide cutting-edge audio and visual systems to elevate your event, workspace, or entertainment space. Our solutions include high-fidelity sound systems, immersive display technologies, and seamless integration for both indoor and outdoor environments.",
+      "content": "Our team ensures the perfect blend of audio clarity and stunning visuals. Whether you need a home theater setup, corporate AV solutions, or an event sound system, we customize solutions that match your requirements.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "FaVolumeUp"
+    },
+    {
+      "id": 3,
+      "title": "Digital Conferencing Solutions",
+      "description": "We offer advanced digital conferencing solutions to facilitate seamless communication and collaboration. Our services include high-quality video conferencing systems, interactive displays, virtual meeting platforms, and integration with various communication tools.",
+      "content": "Enhance remote collaboration with our high-tech conferencing solutions. We provide state-of-the-art conferencing setups that improve engagement and streamline communication across teams.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "FaVideo"
+    },
+    {
+      "id": 4,
+      "title": "Boardroom Modernization",
+      "description": "We specialize in boardroom modernization services, transforming your meeting spaces with the latest technology and innovative solutions from high-definition video conferencing systems and interactive displays to seamless integration with collaborative tools.",
+      "content": "Modernize your boardroom with interactive displays, wireless connectivity, and automated controls. Our solutions ensure productive meetings and effortless collaboration.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "FaDesktop"
+    },
+    {
+      "id": 5,
+      "title": "CCTV and Intruder Alarm Systems",
+      "description": "We provide state-of-the-art CCTV and intruder alarm systems designed to enhance the security of your premises. Our solutions include high-definition cameras, motion detection sensors, real-time monitoring, and remote access capabilities.",
+      "content": "Protect your assets with our advanced surveillance and alarm systems. We offer 24/7 monitoring solutions, remote access, and smart security integrations to keep your premises safe.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "Webcam"
+    },
+    {
+      "id": 6,
+      "title": "Networking",
+      "description": "We provide reliable and high-speed internet service solutions tailored to meet your business or personal needs. Whether you're looking for broadband, wireless, or fiber-optic services, our team ensures seamless connectivity with consistent speeds and excellent customer support.",
+      "content": "Our networking solutions ensure seamless connectivity for businesses and homes. We specialize in structured cabling, Wi-Fi optimization, and secure networking setups.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "Router"
+    },
+    {
+      "id": 7,
+      "title": "ICT Equipment and Accessories",
+      "description": "We offer comprehensive ICT equipment and accessories services to ensure your technology runs smoothly. From maintenance and repairs to installations and upgrades, our expert team is here to support your computers, networking devices, printers, and accessories.",
+      "content": "Get top-quality ICT equipment, from laptops and servers to networking gear. Our team provides maintenance, installations, and reliable tech support to ensure seamless operations.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "FaTools"
+    },
+    {
+      "id": 8,
+      "title": "Managed Service Provider",
+      "description": "Our Managed IT Services provide businesses with proactive, reliable, and secure IT solutions. We take care of your IT infrastructure, ensuring smooth operations, enhanced security, and minimal downtime.",
+      "content": "Our managed services include 24/7 monitoring, cloud solutions, cybersecurity, and IT support. We ensure your IT infrastructure is optimized, secure, and always running smoothly.",
+      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "icon": "Server"
+    }
+  ]
+

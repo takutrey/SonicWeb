@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../Header/Header.css"; 
 import {FaSearch, FaBars, FaTimes} from 'react-icons/fa';
 import SonicLogo from '../../assets/images/sonicsignal-logo.png';
-console.log("Header loaded")
+
 
 const Header = () => { 
 

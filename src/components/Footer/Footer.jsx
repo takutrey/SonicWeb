@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../Footer/Footer.css' 
 import SonicLogo from "../../assets/images/sonicsignal-logo.png"
-import { Link } from 'react-router-dom'
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6'
+import { Link, useParams } from 'react-router-dom'
+import { FaFacebook } from 'react-icons/fa6'
+import { FaLinkedin, FaMailBulk, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import servicesData from '../../data/services.json';
+
 
 const Footer = () => {
+
   return (
     <footer className="footer">
       <div className="container">
@@ -27,22 +31,22 @@ const Footer = () => {
         <div className="footer-links">
           <h3>Services</h3>
           <ul>
-            <li><Link to="/services">Internet Service Solutions</Link></li>
-            <li><Link to="/services">Systems Auditing and Consultation</Link></li>
-            <li><Link to="/services">ICT Equipment and Accessories</Link></li>
-            <li><Link to="/services">Audio and Visual Systems</Link></li>
-            <li><Link to="/services">Digital Conferencing Solutions</Link></li>
-            <li><Link to="/services">Boardroom Modernization</Link></li>
-
+            {servicesData.slice(0, 6).map(service => (
+              <li key={service.id}><Link to={`/service/${service.id}`}>{service.title}</Link></li>
+            ))}
           </ul>
+         
+         
         </div>
 
         <div className="footer-social">
-          <h3>Follow Us</h3>
+          <h3>Get in Touch</h3>
           <div className="social-icons">
-            <a href="" target='_blank' rel='noopener noreferrer'><FaFacebook /></a>
-            <a href="" target='_blank' rel='noopener noreferrer'><FaTwitter /></a>
-            <a href="" target='_blank' rel='noopener noreferrer'><FaInstagram /></a>
+            <a href="https://www.facebook.com/SONICSIGNALSTECH" target='_blank' rel='noopener noreferrer'><FaFacebook /></a>
+            <a href="https://wa.me/+263713346159" target='_blank' rel='noopener noreferrer'><FaWhatsapp /></a>
+            <a href="tel:+2638612855755" target='_blank' rel='noopener noreferrer'><FaPhone /></a>
+            <a href="https://www.linkedin.com/company/sonicsignal-tech/?originalSubdomain=zw" target='_blank' rel='noopener noreferrer'><FaLinkedin /></a>
+            <a href="mailto:info@sonicsignal.co.zw" target='_blank' rel='noopener noreferrer'><FaMailBulk /></a>
           </div>
         </div>
 

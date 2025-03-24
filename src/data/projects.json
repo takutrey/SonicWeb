@@ -1,0 +1,93 @@
+ [
+      {
+        "id": 1,
+        "name": "E-commerce Website",
+        "description": "A fully functional e-commerce platform for online shopping, including product management, user authentication, and secure payment processing.",
+        "images": [
+          "https://img.freepik.com/free-vector/isometric-cms-concept_23-2148807389.jpg?t=st=1742464870~exp=1742468470~hmac=507cf3359d2889c865b728cc3b79fbb062599bfc33a2915a84902f271cc3b159&w=1380",
+          "https://example.com/images/ecommerce2.jpg"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Portfolio Website",
+        "description": "A personal portfolio website to showcase skills, projects, and resume. Includes contact form and blog functionality.",
+        "images": [
+          "https://img.freepik.com/free-vector/angel-investor-abstract-concept_335657-3046.jpg?t=st=1742464894~exp=1742468494~hmac=95ee17a02548130c256b8c4d8a0b8012486042f6d0957a180c725b280124e190&w=900",
+          "https://example.com/images/portfolio2.jpg"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Task Management App",
+        "description": "A task management app that allows users to organize tasks, set priorities, and track deadlines.",
+        "images": [
+          "https://img.freepik.com/free-vector/webinar-internet-lesson-distance-university-tutor-educator-online-learning-seniors-online-courses-seniors-additional-education-concept-pinkish-coral-bluevector-isolated-illustration_335657-1497.jpg?t=st=1742464917~exp=1742468517~hmac=db9b3702a72a0f1d81fb6168286cd5bd07757e00da13c18845494c9fd4ea0a47&w=1380",
+          "https://example.com/images/taskmanager2.jpg"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Blog Platform",
+        "description": "A blog platform where users can create, edit, and comment on blog posts. Supports markdown and rich text formatting.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/blogplatform2.jpg"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Mobile Banking App",
+        "description": "A secure mobile banking application that allows users to view their account balance, make transfers, and pay bills.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/mobilebanking2.jpg"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Real-Time Chat Application",
+        "description": "A real-time chat application that allows users to communicate instantly, with features like group chats, file sharing, and emoji support.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/chatapp2.jpg"
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Weather Dashboard",
+        "description": "A weather dashboard that fetches real-time weather data, displays current conditions, and provides forecasts.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/weatherdashboard2.jpg"
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Recipe Sharing Platform",
+        "description": "A platform for users to share and discover new recipes, rate them, and save their favorites.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/recipeplatform2.jpg"
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Fitness Tracker App",
+        "description": "A mobile app that tracks your workouts, calories burned, and provides personalized fitness plans.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/fitnessapp2.jpg"
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Online Learning Platform",
+        "description": "A platform for students to enroll in courses, take exams, and track their progress in various subjects.",
+        "images": [
+          "https://img.freepik.com/free-vector/students-with-laptops-sitting-around-lector-interactive-board-illustration_335657-261.jpg?t=st=1742464965~exp=1742468565~hmac=08358c0a71c9a7db58d0e9d3e2e8683cacaed651daaf1e5adcd7fd06518e7692&w=1380",
+          "https://example.com/images/learningplatform2.jpg"
+        ]
+      }
+    ]
+  

@@ -1,0 +1,161 @@
+/* Team.css */
+.team-hero-section {
+    background-image: url('https://img.freepik.com/free-vector/team-work-meeting-flat-style_23-2147780667.jpg?t=st=1740655190~exp=1740658790~hmac=e4ec7f146479053683780757a919eb86679baf390bddfe6bbdaefa564f70d87d&w=1060');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-color: #f1f1f1; /* Fallback color in case the image fails to load */
+}
+
+.team-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering the content */
+}
+
+.team-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-hero-content p {
+    font-size: 1.2rem;
+}
+
+.team-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.team-container-title {
+    margin: 30px;
+    font-size: 2rem;
+    text-align: center; /* Center the title and text */
+}
+
+.team-container-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.team-container-title p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: #666666;
+}
+
+.team-header {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-member {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 280px; /* Reduced width for better proportions */
+    height: 350px; /* Set a fixed height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adding a stronger hover effect */
+}
+
+.team-member-image {
+    width: 150px; /* Set a fixed size for the image */
+    height: 150px; /* Set a fixed height */
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-member h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.team-member p {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.team-member-social a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5em; /* Slightly larger icons for better visibility */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.team-member-social a:hover {
+    color: #005582; /* Darker LinkedIn color */
+    transform: scale(1.1); /* Slightly enlarge icons on hover */
+}
+
+/* Adding hover effects for other social icons */
+.team-member-social a:hover:nth-child(1) {
+    color: #3b5998; /* Facebook color (blue) */
+}
+
+.team-member-social a:hover:nth-child(2) {
+    color: black; /* Twitter color */
+}
+.team-member-social a:hover:nth-child(3) {
+    color: #3b5998; /* Facebook color (blue) */
+}
+
+.team-member-social a:hover:nth-child(4) {
+    color: #25D366; /* WhatsApp color */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .team-member {
+        width: 200px; /* Smaller width for mobile */
+        height: auto; /* Allow height to adjust */
+    }
+
+    .team-hero-section {
+        height: 30vh; /* Reduced height for smaller screens */
+    }
+
+    .team-container-title h2 {
+        font-size: 2rem;
+    }
+
+    .team-container-title p {
+        font-size: 1rem;
+    }
+
+    .team-hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .team-hero-content p {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,93 @@
+.services-hero-slider {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 30px; /* Distance from bottom of the hero section */
+    left: 0;
+    z-index: 5; /* Make sure it appears above other elements */
+  }
+  
+  .services-track {
+    display: flex;
+    flex-direction: row;
+    width: max-content; /* Allow content to determine width */
+  }
+  
+  .service-item {
+    flex: 0 0 auto;
+    width: 200px; /* Adjust based on your design */
+    padding: 0 1rem;
+  }
+  
+  .service-hero-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    height: 100%;
+    color: white;
+  }
+  
+  .service-hero-link:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .service-hero-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #cc0000; /* Matches the red from your hero lines */
+  }
+  
+  .service-hero-title {
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  /* Add edge fade effect */
+  .services-hero-slider::before,
+  .services-hero-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .services-hero-slider::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+  }
+  
+  .services-hero-slider::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .services-hero-slider {
+      bottom: 20px; /* Less distance on smaller screens */
+    }
+    
+    .service-item {
+      width: 150px; /* Smaller items on mobile */
+    }
+    
+    .service-hero-icon {
+      font-size: 1.5rem;
+    }
+    
+    .service-hero-title {
+      font-size: 0.8rem;
+    }
+  }

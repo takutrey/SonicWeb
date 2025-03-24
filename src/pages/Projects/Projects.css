@@ -1,0 +1,222 @@
+.projects-hero-section {
+    background-image: url('https://img.freepik.com/free-vector/team-work-meeting-flat-style_23-2147780667.jpg?t=st=1740655190~exp=1740658790~hmac=e4ec7f146479053683780757a919eb86679baf390bddfe6bbdaefa564f70d87d&w=1060');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-color: #f1f1f1; /* Fallback color */
+    position: relative;
+}
+
+.projects-hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+}
+
+.projects-hero-content {
+    position: relative; /* To layer it over the ::before pseudo-element */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.projects-hero-content p {
+    font-size: 1.2rem;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.projects-container-title {
+    margin: 30px;
+    font-size: 2rem;
+    text-align: center; /* Center the title and text */
+}
+
+.projects-container-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.projects-container-title p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: #666666;
+    text-align: center;
+}
+
+.project-name{
+    margin: 20px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%; /* Ensure the container takes up the full width */
+    box-sizing: border-box; /* Include padding in the element's total width */
+}
+
+.project-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    text-align: center;
+    padding: 20px;
+}
+
+.project-overlay-content {
+    max-width: 80%;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-overlay p {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.projects-pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+    gap: 8px;
+}
+
+.projects-pagination-button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #c00;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.projects-pagination-button:hover:not(:disabled) {
+    background-color: #c00;
+    color: white;
+    border-color: #c00;
+}
+
+.projects-pagination-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #f7fafc;
+}
+
+.projects-pagination-numbers {
+    display: flex;
+    gap: 8px;
+    margin: 0 8px;
+}
+
+.projects-pagination-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.projects-pagination-number:hover:not(.active) {
+    background-color: #e2e8f0;
+}
+
+.projects-pagination-number.active {
+    background-color: #c00;
+    color: white;
+    border-color: #c00;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .projects-container-title h2 {
+        font-size: 2rem;
+    }
+    
+    .projects-container-title p {
+        font-size: 1rem;
+    }
+
+    .projects {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .project-overlay h3 {
+        font-size: 1.25rem;
+    }
+
+    .project-overlay p {
+        font-size: 14px;
+    }
+}

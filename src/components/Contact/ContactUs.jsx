@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import {FaXTwitter} from 'react-icons/fa6';
+import { FaFacebookF, FaWhatsapp, FaPhone, FaLinkedinIn } from 'react-icons/fa';
 import '../Contact/ContactUs.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -31,13 +30,13 @@ const Contact = () => {
             <a href="https://www.facebook.com/SONICSIGNALSTECH" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
               <FaFacebookF />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-              <FaXTwitter />
+            <a href="https://wa.me/+263713346159" target="_blank" rel="noopener noreferrer" className="social-icon whatsapp">
+              <FaWhatsapp />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon instagram">
-              <FaInstagram />
+            <a href="tel:+2638612855755" target="_blank" rel="noopener noreferrer" className="social-icon voip">
+              <FaPhone />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+            <a href="https://www.linkedin.com/company/sonicsignal-tech/?originalSubdomain=zw" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
               <FaLinkedinIn />
             </a>
           </div>

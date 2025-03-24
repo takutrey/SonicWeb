@@ -1,111 +1,105 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import { Users, CheckSquare, Clock } from 'lucide-react';
 import '../Counter/Counter.css';
 
-const Counter = ({ value, suffix = '', duration = 2 }) => {
-  const [count, setCount] = useState(0);
-  const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  });
+const StatisticsCounter = () => {
+  const [dateDifference, setDateDifference] = useState('');
 
   useEffect(() => {
-    if (inView) {
-      let start = 0;
-      const increment = value / (duration * 60); // 60fps
-      const timer = setInterval(() => {
-        start += increment;
-        if (start > value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 1000 / 60);
+    const calculateDateDifference = () => {
+      const startDate = new Date(2014, 6, 21);
+      const todayDate = new Date();
 
-      return () => clearInterval(timer);
-    }
-  }, [inView, value, duration]);
+      const years = Math.abs(todayDate.getFullYear() - startDate.getFullYear());
+      const months = Math.abs(todayDate.getMonth() - startDate.getMonth());
+      const days = Math.abs(todayDate.getDate() - startDate.getDate());
+      const hours = Math.abs(todayDate.getHours() - startDate.getHours());
+      const minutes = Math.abs(todayDate.getMinutes() - startDate.getMinutes());
+      const seconds = Math.abs(todayDate.getSeconds() - startDate.getSeconds());
 
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="counter-value"
-    >
-      {count}{suffix}
-    </motion.div>
-  );
-};
+      setDateDifference(`${years}Y, ${months}M, ${days}D, ${hours}Hrs, ${minutes}Mins, ${seconds}s`);
+    };
 
-const StatisticsCounter = () => {
+    // Calculate date difference initially
+    calculateDateDifference();
+
+    // Update every second
+    const interval = setInterval(() => {
+      calculateDateDifference();
+    }, 1000);
+
+    // Cleanup on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
   const stats = [
     {
-        icon: <Clock className="stats-icon" />,
-        value: 10,
-        label: "Operating Years",
-        suffix: "+"
-      },
-    {
-      icon: <Users className="stats-icon" />,
-      value: 60,
-      label: "Happy Clients",
-      suffix: "+"
+      icon: <Clock className="stats-icon" />,
+      value: dateDifference, // Updated to display the calculated date difference
+      label: 'Operating Period',
+      details: 'We have been in business for over a decade.',
+      link: '/operating-years',
     },
     {
       icon: <CheckSquare className="stats-icon" />,
       value: 80,
-      label: "Projects Completed",
-      suffix: "+"
+      label: 'Projects Completed',
+      suffix: '+',
+      details: 'We have successfully delivered 80+ projects.',
+      link: '/projects',
     },
     {
       icon: <Users className="stats-icon" />,
       value: 25,
-      label: "Engineers Available",
-      suffix: ""
-    }
+      label: 'Engineers Available',
+      suffix: '',
+      details: 'Our team consists of 25 skilled engineers.',
+      link: '/team-members',
+    },
   ];
 
   return (
     <div className="stats-container">
       <div className="stats-wrapper">
         {stats.map((stat, index) => (
-          <motion.div
-            key={index}
-            className="stat-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.2
-            }}
-          >
-            <motion.div
-              className="icon-wrapper"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {stat.icon}
-            </motion.div>
-            <Counter 
-              value={stat.value} 
-              suffix={stat.suffix}
-              duration={2}
-            />
-            <motion.div
-              className="stat-label"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 + index * 0.2 }}
-            >
-              {stat.label}
-            </motion.div>
-          </motion.div>
+          <Link to={stat.link} key={index} className="stat-card-link">
+            <div className="stat-card">
+              {/* Front Side */}
+              <div className="stat-front">
+                <div className="icon-wrapper">{stat.icon}</div>
+                {stat.label === 'Operating Period' ? (
+                  <div className="counter-value">
+                    <p className="stat-operating-years-counter">
+                    {stat.value}
+                    </p></div>
+                ) : (
+                  <div className="counter-value">
+                    {stat.value}
+                    {stat.suffix}
+                  </div>
+                )}
+                <div className="stat-label">{stat.label}</div>
+              </div>
+
+              {/* Back Side */}
+              {stat.label === 'Operating Period' ? (
+                <div className="stat-back">
+                <p>{stat.details}</p>
+
+              </div>) : (
+                <div className="stat-back">
+                <p>{stat.details}</p>
+                <span className="click-text">
+                  <button className="stat-back-button">Learn More</button>
+                </span>
+              </div>
+
+              )
+                }
+         
+            </div>
+          </Link>
         ))}
       </div>
     </div>

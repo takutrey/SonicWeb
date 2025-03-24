@@ -1,53 +1,16 @@
 import React from 'react';
-import { FaCode, FaPaintBrush, FaMobileAlt, FaWrench, FaPlug, FaSatellite, FaDesktop, FaCamera, FaCameraRetro, FaVideo, FaVolumeUp, FaUserTie, FaTools, FaWifi } from 'react-icons/fa';
-import { ArrowRight, Webcam } from 'lucide-react';
+import * as FaIcons from 'react-icons/fa';
+import { FaWhatsapp, FaFacebookF, FaPhone, FaLinkedinIn, FaMailBulk } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import * as LucideIcons from 'lucide-react';
 import '../ServicesPage/ServicesPage.css';
+import services from '../../data/services.json'; 
 
-const services = [
-  {
-    id: 1,
-    title: 'Systems Auditing and Consultation',
-    description: 'We specialize in comprehensive systems auditing and consultation services to help you optimize your IT infrastructure. Our expert team conducts thorough assessments to identify risks, inefficiencies, and areas for improvement in your systems.',
-    icon: <FaUserTie size={40} className="servicepage-icon" />,
-  },
-  {
-    id: 2,
-    title: 'Audio and Visual Systems',
-    description: 'We provide cutting-edge audio and visual systems to elevate your event, workspace, or entertainment space. Our solutions include high-fidelity sound systems, immersive display technologies, and seamless integration for both indoor and outdoor environments.',
-    icon: <FaVolumeUp size={40} className="servicepage-icon" />,
-  },
-  {
-    id: 3,
-    title: 'Digital Conferencing Solutions',
-    description: 'We offer advanced digital conferencing solutions to facilitate seamless communication and collaboration. Our services include high-quality video conferencing systems, interactive displays, virtual meeting platforms, and integration with various communication tools.',
-    icon: <FaVideo size={40} className="servicepage-icon" />,
-  }, 
-  {
-    id: 4,
-    title: 'Boardroom Modernization',
-    description: 'We specialize in boardroom modernization services, transforming your meeting spaces with the latest technology and innovative solutions from high-definition video conferencing systems and interactive displays to seamless integration with collaborative tools.',
-    icon: <FaDesktop size={40} className="servicepage-icon" />,
-  }, 
-  {
-    id: 5,
-    title: 'CCTV and Intruder Alarm Systems',
-    description: 'We provide state-of-the-art CCTV and intruder alarm systems designed to enhance the security of your premises. Our solutions include high-definition cameras, motion detection sensors, real-time monitoring, and remote access capabilities.',
-    icon: <Webcam size={40} className="servicepage-icon" />,
-  }, 
-  {
-    id: 6,
-    title: 'Internet Service Solutions',
-    description: "We provide reliable and high-speed internet service solutions tailored to meet your business or personal needs. Whether you're looking for broadband, wireless, or fiber-optic services, our team ensures seamless connectivity with consistent speeds and excellent customer support.",
-    icon: <FaWifi size={40} className="servicepage-icon" />,
-  }, 
-  {
-    id: 6,
-    title: 'ICT Equipment and Accessories',
-    description: 'We offer comprehensive ICT equipment and accessories services to ensure your technology runs smoothly. From maintenance and repairs to installations and upgrades, our expert team is here to support your computers, networking devices, printers, and accessories.',
-    icon: <FaTools size={40} className="servicepage-icon" />,
-  }
+const getIcon = (iconName) => {
+  const ServiceIcon = FaIcons[iconName] || LucideIcons[iconName];
+  return ServiceIcon ? React.createElement(ServiceIcon) : <FaIcons.FaTools />;
+}
 
-];
 
 const ServicesPage = () => {
   return (
@@ -57,6 +20,23 @@ const ServicesPage = () => {
         <div className="servicepage-hero-content">
           <h1>Our Services</h1>
           <p>We provide top-notch digital solutions to help your business grow.</p>
+          <div className="social-icons">
+                      <a href="https://www.facebook.com/SONICSIGNALSTECH" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
+                        <FaFacebookF />
+                      </a>
+                      <a href="https://wa.me/+263713346159" target="_blank" rel="noopener noreferrer" className="social-icon whatsapp">
+                        <FaWhatsapp />
+                      </a>
+                      <a href="tel:+2638612855755" target="_blank" rel="noopener noreferrer" className="social-icon voip">
+                        <FaPhone />
+                      </a>
+                      <a href="https://www.linkedin.com/company/sonicsignal-tech/?originalSubdomain=zw" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+                        <FaLinkedinIn />
+                      </a>
+                      <a href="mailto:info@sonicsignal.zo.zw" target="_blank" rel="noopener noreferrer" className="social-icon linkedin">
+                        <FaMailBulk />
+                      </a>
+                  </div>
         </div>
       </section>
 
@@ -64,7 +44,7 @@ const ServicesPage = () => {
       <section className="servicepage-intro">
         <h2 className="servicepage-title">What We Offer</h2>
         <p className="servicepage-description">
-          From web and mobile development to UI/UX design, our team is dedicated to delivering high-quality solutions tailored to your needs.
+          Our team is dedicated to delivering high-quality solutions tailored to your needs.
         </p>
       </section>
 
@@ -73,8 +53,14 @@ const ServicesPage = () => {
         <div className="servicepage-container">
           {services.map((service) => (
             <div key={service.id} className="servicepage-card">
-              <div className="servicepage-icon-wrapper">{service.icon}</div>
-              <h3 className="servicepage-card-title">{service.title}</h3>
+              
+              <div className="servicepage-icon-wrapper">{getIcon(service.icon)}</div>
+            
+                <Link to={service.id === 7 ? '/shop' : `/service/${service.id}`} className='services-page-link'>
+                <h3 className="servicepage-card-title">{service.title}</h3>
+              </Link>
+
+           
               <p className="servicepage-card-description">{service.description}</p>
             </div>
           ))}

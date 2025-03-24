@@ -1,0 +1,171 @@
+[
+    {
+      "id": 1,
+      "serviceId": 1,
+      "name": "Basic Auditing Package",
+      "price": "$500",
+      "description": "A comprehensive auditing package focused on key system checks and reports."
+    },
+    {
+      "id": 2,
+      "serviceId": 1,
+      "name": "Advanced Auditing Package",
+      "price": "$1500",
+      "description": "Includes detailed analysis, risk assessment, and recommendations for system optimization."
+    },
+    {
+      "id": 3,
+      "serviceId": 1,
+      "name": "Full Audit & Consultation Package",
+      "price": "$3000",
+      "description": "A full-service package that includes in-depth audits, consultation, and strategic improvement plans."
+    },
+    {
+      "id": 4,
+      "serviceId": 2,
+      "name": "Basic AV Setup",
+      "price": "$1000",
+      "description": "Set up of basic audio and visual equipment, perfect for small spaces or personal use."
+    },
+    {
+      "id": 5,
+      "serviceId": 2,
+      "name": "Premium AV Setup",
+      "price": "$3000",
+      "description": "An advanced audio and visual setup for larger venues or high-end installations."
+    },
+    {
+      "id": 6,
+      "serviceId": 2,
+      "name": "Event AV Package",
+      "price": "$5000",
+      "description": "Complete AV solution for corporate events or large-scale gatherings, including live streaming."
+    },
+    {
+      "id": 7,
+      "serviceId": 3,
+      "name": "Basic Conferencing Package",
+      "price": "$700",
+      "description": "Basic video conferencing system setup for small teams or personal use."
+    },
+    {
+      "id": 8,
+      "serviceId": 3,
+      "name": "Advanced Conferencing Package",
+      "price": "$2500",
+      "description": "A complete conferencing solution with high-quality video, audio, and collaborative tools."
+    },
+    {
+      "id": 9,
+      "serviceId": 3,
+      "name": "Enterprise Conferencing Solution",
+      "price": "$5000",
+      "description": "Enterprise-grade conferencing systems with seamless integration across departments."
+    },
+    {
+      "id": 10,
+      "serviceId": 4,
+      "name": "Basic Boardroom Package",
+      "price": "$2000",
+      "description": "A simple boardroom upgrade with essential conferencing tools and wireless connectivity."
+    },
+    {
+      "id": 11,
+      "serviceId": 4,
+      "name": "Premium Boardroom Package",
+      "price": "$5000",
+      "description": "A comprehensive boardroom solution with interactive displays and high-quality AV systems."
+    },
+    {
+      "id": 12,
+      "serviceId": 4,
+      "name": "Enterprise Boardroom Package",
+      "price": "$8000",
+      "description": "Top-of-the-line boardroom setup with automation, wireless presentation tools, and remote collaboration features."
+    },
+    {
+      "id": 13,
+      "serviceId": 5,
+      "name": "Basic CCTV Package",
+      "price": "$800",
+      "description": "Standard CCTV surveillance package with up to 4 cameras and basic recording options."
+    },
+    {
+      "id": 14,
+      "serviceId": 5,
+      "name": "Advanced CCTV Package",
+      "price": "$2000",
+      "description": "Advanced CCTV setup with motion sensors, high-definition cameras, and remote access capabilities."
+    },
+    {
+      "id": 15,
+      "serviceId": 5,
+      "name": "Full Security Package",
+      "price": "$5000",
+      "description": "Complete surveillance and security system with CCTV, alarms, and 24/7 monitoring."
+    },
+    {
+      "id": 16,
+      "serviceId": 6,
+      "name": "Basic Networking Package",
+      "price": "$300",
+      "description": "Set up a reliable and secure home or office network with routers and cabling."
+    },
+    {
+      "id": 17,
+      "serviceId": 6,
+      "name": "Advanced Networking Package",
+      "price": "$1000",
+      "description": "Comprehensive networking solution with Wi-Fi optimization, firewalls, and business-grade routers."
+    },
+    {
+      "id": 18,
+      "serviceId": 6,
+      "name": "Enterprise Networking Package",
+      "price": "$3000",
+      "description": "High-performance networking solution with advanced security, monitoring, and fiber-optic options."
+    },
+    {
+      "id": 19,
+      "serviceId": 7,
+      "name": "Basic ICT Equipment Package",
+      "price": "$500",
+      "description": "Essential ICT equipment package including computers, networking devices, and accessories."
+    },
+    {
+      "id": 20,
+      "serviceId": 7,
+      "name": "Premium ICT Equipment Package",
+      "price": "$2000",
+      "description": "Comprehensive ICT equipment with advanced tech support and maintenance options."
+    },
+    {
+      "id": 21,
+      "serviceId": 7,
+      "name": "Complete ICT Solutions",
+      "price": "$5000",
+      "description": "Full-service ICT solutions including hardware, software, maintenance, and installation."
+    },
+    {
+      "id": 22,
+      "serviceId": 8,
+      "name": "Basic MSP Package",
+      "price": "$1000",
+      "description": "Essential managed IT services including basic infrastructure support and remote monitoring."
+    },
+    {
+      "id": 23,
+      "serviceId": 8,
+      "name": "Advanced MSP Package",
+      "price": "$3000",
+      "description": "Advanced managed services with enhanced security, cloud solutions, and disaster recovery."
+    },
+    {
+      "id": 24,
+      "serviceId": 8,
+      "name": "Enterprise MSP Package",
+      "price": "$7000",
+      "description": "Comprehensive managed IT services for large organizations, including 24/7 support and custom IT solutions."
+    }
+  ]
+  
