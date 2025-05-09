@@ -21,7 +21,6 @@ const Packages = ({selectedService}) => {
                       <h3 className='package-title'>{servicepackage.name}</h3>
                       <p className='package-price'>{servicepackage.price}</p>
                       <p className='package-description'>{servicepackage.description}</p>
-                      <button className='package-button'>Send Inquiry</button>
                   </div>
                 </div>
               ))

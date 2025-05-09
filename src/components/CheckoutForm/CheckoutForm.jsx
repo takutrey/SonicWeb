@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
 import "./CheckoutForm.css";
+import axios from "axios";
+import {v4 as uuidV4} from 'uuid';
+
 
 const CheckoutForm = ({ onSubmit, total, items }) => {
   const [formData, setFormData] = useState({
@@ -10,17 +13,14 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
     phone: "",
     address: "",
     city: "",
-    state: "",
-    zipCode: "",
-    country: "",
+    province: "",
     paymentMethod: "credit",
-    cardName: "",
-    cardNumber: "",
-    cardExpiry: "",
-    cardCVC: "",
+    country: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [orderPlaced, setOrderPlaced] = useState(false); 
+  const [orderNumber, setOrderNumber] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,24 +49,49 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
     if (!formData.address.trim()) newErrors.address = "Address is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
-    if (!formData.state.trim()) newErrors.state = "State is required";
-    if (!formData.zipCode.trim()) newErrors.zipCode = "Zip code is required";
+    if (!formData.province.trim()) newErrors.province = "Province is required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
     
-    // Payment method validation
-    if (formData.paymentMethod === "credit") {
-      if (!formData.cardName.trim()) newErrors.cardName = "Name on card is required";
-      if (!formData.cardNumber.trim()) newErrors.cardNumber = "Card number is required";
-      if (!/^\d{16}$/.test(formData.cardNumber.replace(/\s/g, ''))) newErrors.cardNumber = "Invalid card number";
-      if (!formData.cardExpiry.trim()) newErrors.cardExpiry = "Expiry date is required";
-      if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(formData.cardExpiry)) newErrors.cardExpiry = "Invalid format (MM/YY)";
-      if (!formData.cardCVC.trim()) newErrors.cardCVC = "CVC is required";
-      if (!/^\d{3,4}$/.test(formData.cardCVC)) newErrors.cardCVC = "Invalid CVC";
-    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  const generateOrderNumber = () => {
+    const newOrderNumber = uuidV4();
+    setOrderNumber(newOrderNumber);
+    return newOrderNumber;
+  }
+
+
+  const addCustomerData = async (orderData) => {
+    try {
+      const response = await axios.post("http://localhost:5050/api/add-customer", orderData);
+      console.log("Customer added successfully", response.data);
+      return true; 
+      
+    } catch (error) {
+      console.error("Error saving customer", error);
+      return false;
+      
+    }
+  }
+
+  const sendEmailInvoice = async (orderData) => {
+    try {
+      const response = await axios.post("http://localhost:5050/api/send-invoice", {
+        email: orderData.customer.email,
+        orderData: orderData
+      });
+      console.log("Invoice email sent successfully", response.data);
+      return true;
+
+    } catch (error) {
+      console.error("Error sending invoice email", error);
+      return false;
+      
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,29 +99,85 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
     if (!validateForm()) return;
     
     setIsSubmitting(true);
+
+    const generatedOrderNumber = generateOrderNumber();
+
+    
+
+     // Calculate tax (assuming 8% tax rate)
+  const taxRate = 0.08;
+  const taxAmount = total * taxRate;
+  const grandTotal = total + taxAmount; 
+
+    const orderData = {
+      orderNumber: generatedOrderNumber, 
+      orderDate: new Date().toISOString(),
+      customer: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        city: formData.city,
+        province: formData.province,
+        country: formData.country,
+      },
+      items: items.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      })),
+      paymentMethod: formData.paymentMethod,
+      subtotal: total,
+      tax: taxAmount,
+      total: grandTotal,
+    }; 
+
+    console.log(orderData);
+
     try {
-      await onSubmit({
-        ...formData,
-        items: items.map(item => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity
-        })),
-        totalAmount: total
-      });
-      // Form submission successful
+
+      console.log("Email sending")
+      const emailSent = await sendEmailInvoice(orderData);
+      if (!emailSent) {
+        console.warn("Order processed but email confirmation failed");
+      } 
+
+      const customerSaved = await addCustomerData(orderData); 
+      if(!customerSaved){
+        console.warn("Customer data not saved")
+      }
+      
     } catch (error) {
-      console.error("Checkout submission error:", error);
-    } finally {
+      console.error("Error placing order", error);
+      alert("An error occurred while placing your order. Please try again later.");
+      
+    } finally{
       setIsSubmitting(false);
     }
+    
   };
 
   // Calculate tax (assuming 8% tax rate)
   const taxRate = 0.08;
   const taxAmount = total * taxRate;
   const grandTotal = total + taxAmount;
+
+ if(orderPlaced) {
+  return(
+    <div className="checkout-success">
+    <div className="success-icon">✓</div>
+    <h2>Order Placed Successfully!</h2>
+    <p>Your order number is: <strong>{orderNumber}</strong></p>
+    <p>We've sent a confirmation email to: <strong>{formData.email}</strong></p>
+    <p>Thank you for shopping with us!</p>
+    <button className="continue-shopping-button" onClick={onClose}>Continue Shopping</button>
+  </div>
+);
+  }
+
+ 
 
   return (
     <div className="checkout-container">
@@ -141,7 +222,7 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
       
       <form onSubmit={handleSubmit} className="checkout-form">
         <div className="form-section">
-          <h3>Shipping Information</h3>
+          <h3>Personal Information</h3>
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="firstName">First Name</label>
@@ -223,11 +304,11 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
               {errors.city && <span className="error-message">{errors.city}</span>}
             </div>
             <div className="form-group">
-              <label htmlFor="state">State</label>
+              <label htmlFor="province">Province</label>
               <input
                 type="text"
-                id="state"
-                name="state"
+                id="province"
+                name="province"
                 value={formData.state}
                 onChange={handleChange}
                 className={errors.state ? "error" : ""}
@@ -237,18 +318,6 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
           </div>
           
           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="zipCode">Zip Code</label>
-              <input
-                type="text"
-                id="zipCode"
-                name="zipCode"
-                value={formData.zipCode}
-                onChange={handleChange}
-                className={errors.zipCode ? "error" : ""}
-              />
-              {errors.zipCode && <span className="error-message">{errors.zipCode}</span>}
-            </div>
             <div className="form-group">
               <label htmlFor="country">Country</label>
               <input
@@ -270,93 +339,31 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
             <div className="payment-method">
               <input
                 type="radio"
-                id="credit"
+                id="cash"
                 name="paymentMethod"
-                value="credit"
-                checked={formData.paymentMethod === "credit"}
+                value="cash"
+                checked={formData.paymentMethod === "cash"}
                 onChange={handleChange}
               />
-              <label htmlFor="credit">Credit Card</label>
+              <label htmlFor="cash">Cash</label>
             </div>
             <div className="payment-method">
               <input
                 type="radio"
-                id="paypal"
+                id="card"
                 name="paymentMethod"
-                value="paypal"
-                checked={formData.paymentMethod === "paypal"}
+                value="card"
+                checked={formData.paymentMethod === "card"}
                 onChange={handleChange}
               />
-              <label htmlFor="paypal">PayPal</label>
+              <label htmlFor="card">Card</label>
             </div>
           </div>
+        
           
-          {formData.paymentMethod === "credit" && (
-            <div className="credit-card-form">
-              <div className="form-group">
-                <label htmlFor="cardName">Name on Card</label>
-                <input
-                  type="text"
-                  id="cardName"
-                  name="cardName"
-                  value={formData.cardName}
-                  onChange={handleChange}
-                  className={errors.cardName ? "error" : ""}
-                />
-                {errors.cardName && <span className="error-message">{errors.cardName}</span>}
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="cardNumber">Card Number</label>
-                <input
-                  type="text"
-                  id="cardNumber"
-                  name="cardNumber"
-                  value={formData.cardNumber}
-                  onChange={handleChange}
-                  placeholder="1234 5678 9012 3456"
-                  className={errors.cardNumber ? "error" : ""}
-                  maxLength="19"
-                />
-                {errors.cardNumber && <span className="error-message">{errors.cardNumber}</span>}
-              </div>
-              
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="cardExpiry">Expiry Date</label>
-                  <input
-                    type="text"
-                    id="cardExpiry"
-                    name="cardExpiry"
-                    value={formData.cardExpiry}
-                    onChange={handleChange}
-                    placeholder="MM/YY"
-                    className={errors.cardExpiry ? "error" : ""}
-                    maxLength="5"
-                  />
-                  {errors.cardExpiry && <span className="error-message">{errors.cardExpiry}</span>}
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cardCVC">CVC</label>
-                  <input
-                    type="text"
-                    id="cardCVC"
-                    name="cardCVC"
-                    value={formData.cardCVC}
-                    onChange={handleChange}
-                    placeholder="123"
-                    className={errors.cardCVC ? "error" : ""}
-                    maxLength="4"
-                  />
-                  {errors.cardCVC && <span className="error-message">{errors.cardCVC}</span>}
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {formData.paymentMethod === "paypal" && (
+          {formData.paymentMethod === "card" && (
             <div className="paypal-info">
-              <p>You will be redirected to PayPal to complete your payment.</p>
+              <p>Card payments are unavailable.</p>
             </div>
           )}
         </div>

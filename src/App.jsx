@@ -7,7 +7,6 @@ import Hub from "./pages/Hub.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import SingleProduct from "./components/SingleProduct/SingleProduct.jsx";
 import SingleBlog from "./components/SingleBlog/SingleBlog.jsx";
-import blogData from './data/blog.json'; 
 import servicesData from './data/services.json';
 import SingleService from "./components/SingleService/SingleService.jsx";
 import Team from "./pages/Team/Team.jsx";
@@ -26,7 +25,7 @@ function App() {
       <Route path="/blog" element={<Hub />} />
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/product/:productId" element={<SingleProduct />} />
-      <Route path="/post/:id" element={<SingleBlog blogs={blogData} />} />
+      <Route path="/post/:id" element={<SingleBlog />} />
       <Route path="/service/:id" element={<SingleService />} />
       <Route path="/team-members" element={<Team />} /> 
       <Route path="/projects" element={<Projects />} />

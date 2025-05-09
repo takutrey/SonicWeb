@@ -184,7 +184,7 @@
 }
 
 .place-order-button {
-  background-color: #4caf50;
+  background-color: #222222;
   color: white;
   border: none;
   padding: 12px 30px;
@@ -195,7 +195,7 @@
 }
 
 .place-order-button:hover {
-  background-color: #45a049;
+  background-color: #222222;
 }
 
 .place-order-button:disabled {

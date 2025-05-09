@@ -40,12 +40,7 @@ const Header = () => {
               <Link to="/contact"  className={isActive("/contact")}onClick={toggleMenu}>Contact Us</Link>
             </nav>
     
-            <div className='search-bar'> 
-              <input type='text' placeholder='Search...' />
-              <button className='search-icon-btn'>
-                <FaSearch />
-              </button>
-            </div>
+           
           </div>
         </header>
       )
