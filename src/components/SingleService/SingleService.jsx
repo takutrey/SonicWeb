@@ -96,16 +96,17 @@ const SingleService = () => {
           </div>
         </div>
       </section>
-
+      {/* 
       <section className="single-service-pricing">
         <div className="single-service-pricing-title">
           <h2 className='single-service-package-title'>Packages</h2>
           <p className='single-service-package-description'>
             Select a package that suits your needs
           </p>
-          <Packages selectedService={service} />
+
         </div>
       </section>
+      */}
 
       <section className="more-services">
         <div className="more-services-title">

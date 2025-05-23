@@ -39,7 +39,7 @@ const StatisticsCounter = () => {
       value: dateDifference, // Updated to display the calculated date difference
       label: 'Operating Period',
       details: 'We have been in business for over a decade.',
-      link: '/operating-years',
+      link: '',
     },
     {
       icon: <CheckSquare className="stats-icon" />,
@@ -47,7 +47,7 @@ const StatisticsCounter = () => {
       label: 'Projects Completed',
       suffix: '+',
       details: 'We have successfully delivered 80+ projects.',
-      link: '/projects',
+      link: '',
     },
     {
       icon: <Users className="stats-icon" />,
@@ -55,7 +55,7 @@ const StatisticsCounter = () => {
       label: 'Engineers Available',
       suffix: '',
       details: 'Our team consists of 25 skilled engineers.',
-      link: '/team-members',
+      link: '',
     },
   ];
 
@@ -90,9 +90,11 @@ const StatisticsCounter = () => {
               </div>) : (
                 <div className="stat-back">
                 <p>{stat.details}</p>
+                {/* 
                 <span className="click-text">
                   <button className="stat-back-button">Learn More</button>
                 </span>
+                */}
               </div>
 
               )

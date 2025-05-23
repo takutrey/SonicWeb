@@ -66,7 +66,7 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
 
   const addCustomerData = async (orderData) => {
     try {
-      const response = await axios.post("http://localhost:5050/api/add-customer", orderData);
+      const response = await axios.post("https://sonicsignal-website.onrender.com/api/add-customer", orderData);
       console.log("Customer added successfully", response.data);
       return true; 
       
@@ -79,7 +79,7 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
 
   const sendEmailInvoice = async (orderData) => {
     try {
-      const response = await axios.post("http://localhost:5050/api/send-invoice", {
+      const response = await axios.post("https://sonicsignal-website.onrender.com/api/send-invoice", {
         email: orderData.customer.email,
         orderData: orderData
       });
@@ -190,7 +190,7 @@ const CheckoutForm = ({ onSubmit, total, items }) => {
             <div key={item.id} className="order-item">
               <div className="item-info">
                 <div className="item-image">
-                  <img src={`http://localhost:5050/${item.image}`} alt={item.name} />
+                  <img src={`https://sonicsignal-website.onrender.com/${item.image}`} alt={item.name} />
                 </div>
                 <div className="item-details">
                   <h4>{item.name}</h4>

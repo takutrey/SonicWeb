@@ -5,7 +5,7 @@
       "title": "Systems Auditing and Consultation",
       "description": "We specialize in comprehensive systems auditing and consultation services to help you optimize your IT infrastructure. Our expert team conducts thorough assessments to identify risks, inefficiencies, and areas for improvement in your systems.",
       "content": "Our systems auditing process involves a detailed evaluation of your IT landscape, ensuring compliance with industry standards and security protocols. We provide in-depth reports and strategic recommendations tailored to your organization's needs.",
-      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "images": ["/src/assets/images/Auditing/1610297230959.png", "/src/assets/images/Auditing/it-audit-services.jpgw3.webp", "/src/assets/images/Auditing/shutterstock_1155225169-1.jpg"],
       "icon": "FaUserTie"
     },
     {
@@ -29,7 +29,7 @@
       "title": "Boardroom Modernization",
       "description": "We specialize in boardroom modernization services, transforming your meeting spaces with the latest technology and innovative solutions from high-definition video conferencing systems and interactive displays to seamless integration with collaborative tools.",
       "content": "Modernize your boardroom with interactive displays, wireless connectivity, and automated controls. Our solutions ensure productive meetings and effortless collaboration.",
-      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "images": ["/src/assets/images/Boardroom/1608112641.0157_wm_131.jpg", "/src/assets/images/Boardroom/Frame-162882.webp"],
       "icon": "FaDesktop"
     },
     {
@@ -37,7 +37,7 @@
       "title": "CCTV and Intruder Alarm Systems",
       "description": "We provide state-of-the-art CCTV and intruder alarm systems designed to enhance the security of your premises. Our solutions include high-definition cameras, motion detection sensors, real-time monitoring, and remote access capabilities.",
       "content": "Protect your assets with our advanced surveillance and alarm systems. We offer 24/7 monitoring solutions, remote access, and smart security integrations to keep your premises safe.",
-      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "images": ["/src/assets/images/CCTV/4-Signs-that-You-Need-to-Upgrade-Your-CCTV-Surveillance-System.jpg", "/src/assets/images/CCTV/cctv-cameras-vs-alarm-systems.jpg", "/src/assets/images/CCTV/network_solution.jpg", "/src/assets/images/CCTV/shutterstock_272833616.jpg", "/src/assets/images/CCTV/TC_KRS_Bulk_H100_DSC01900.webp"],
       "icon": "Webcam"
     },
     {
@@ -45,7 +45,7 @@
       "title": "Networking",
       "description": "We provide reliable and high-speed internet service solutions tailored to meet your business or personal needs. Whether you're looking for broadband, wireless, or fiber-optic services, our team ensures seamless connectivity with consistent speeds and excellent customer support.",
       "content": "Our networking solutions ensure seamless connectivity for businesses and homes. We specialize in structured cabling, Wi-Fi optimization, and secure networking setups.",
-      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "images": ["/src/assets/images/discouraged-african-american-couple-struggles-with-unstable-wi-fi-network.jpg", "/src/assets/images/network-switch-with-cables.jpg"],
       "icon": "Router"
     },
     {
@@ -61,7 +61,7 @@
       "title": "Managed Service Provider",
       "description": "Our Managed IT Services provide businesses with proactive, reliable, and secure IT solutions. We take care of your IT infrastructure, ensuring smooth operations, enhanced security, and minimal downtime.",
       "content": "Our managed services include 24/7 monitoring, cloud solutions, cybersecurity, and IT support. We ensure your IT infrastructure is optimized, secure, and always running smoothly.",
-      "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5BZdE7fHOXc_GZpZ7P89g-ka65LI9_g0Tg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_btFwdY06DM2s2-KnSn0Q1blI1S_przRMQ&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdiswZ2WbWv3YWvXe8xX9HBm50OrOhYBj9g&s"],
+      "images": ["/src/assets/images/technician-doing-system-analysis-using-tablet-doing-needed-adjustments.jpg", "/src/assets/images/servers-delivering-web-content.jpg"],
       "icon": "Server"
     }
   ]

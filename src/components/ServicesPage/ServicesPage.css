@@ -1,140 +1,139 @@
 /* Hero Section */
 .servicepage-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url('https://img.freepik.com/free-vector/team-work-meeting-flat-style_23-2147780667.jpg?t=st=1740655190~exp=1740658790~hmac=e4ec7f146479053683780757a919eb86679baf390bddfe6bbdaefa564f70d87d&w=1060');
-    background-size: cover;
-    background-position: center;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-  }
-  
-  .servicepage-hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .servicepage-hero-content p {
-    font-size: 1.2rem;
-  }
-  
-  /* Services Intro Section */
-  .servicepage-intro {
-    text-align: center;
-    padding: 3rem 2rem;
-  }
-  
-  .servicepage-title {
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
-  .servicepage-description {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 700px;
-    margin: auto;
-  }
-  
-  /* Services Section */
-  .servicepage-section {
-    padding: 4rem 2rem;
-    background-color: #ffffff;
-    text-align: center;
-  }
-  
-  /* Container */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/src/assets/images/group-technicians-doing-brainstorming-reconfiguring-server-farm.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.servicepage-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.servicepage-hero-content p {
+  font-size: 1.2rem;
+}
+
+/* Services Intro Section */
+.servicepage-intro {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.servicepage-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.servicepage-description {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Services Section */
+.servicepage-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* Container */
+.servicepage-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
   .servicepage-container {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (min-width: 768px) {
-    .servicepage-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .servicepage-container {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  /* Service Card */
-  .servicepage-card {
-    background: white;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    align-items: center;
-    flex-direction: column; 
-    display: flex;
-  }
-  
-  .servicepage-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Icons */
-  .servicepage-icon-wrapper {
-    color: #c00;
-    font-size: 40px;
-    margin-bottom: 1rem;
-  }
-  
-  .servicepage-icon {
-    color: #c00;
-  }
-  
-  /* Title & Description */
-  .servicepage-card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .servicepage-card-description {
-    color: #666;
-    font-size: 1rem;
-  }
-  
-  /* Buttons */
-  .servicepage-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background-color: #c00;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1rem;
-    margin-top: 1.5rem;
-  }
-  
-  .servicepage-button:hover {
-    background-color: #f40928;
-  }
-  
+}
 
-  .services-page-link{
-    text-decoration: none;
-    color: black;
-  } 
-
-  .services-page-link:hover{
-    color: #c00;
+@media (min-width: 1024px) {
+  .servicepage-container {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Service Card */
+.servicepage-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.servicepage-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Icons */
+.servicepage-icon-wrapper {
+  color: #c00;
+  font-size: 40px;
+  margin-bottom: 1rem;
+}
+
+.servicepage-icon {
+  color: #c00;
+}
+
+/* Title & Description */
+.servicepage-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.servicepage-card-description {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.servicepage-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #c00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.servicepage-button:hover {
+  background-color: #f40928;
+}
+
+.services-page-link {
+  text-decoration: none;
+  color: black;
+}
+
+.services-page-link:hover {
+  color: #c00;
+}

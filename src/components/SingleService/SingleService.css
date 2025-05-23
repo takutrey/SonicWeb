@@ -10,127 +10,26 @@
   margin-bottom: 30px;
 }
 
-/* Single service flexbox */
+/* Flexbox container */
 .single-service-content {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
   gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .single-service-images-container {
-  flex: 1;
-  width: 100%;
+  position: relative;
+  flex: 1 1 500px;
+  max-width: 600px;
   height: 400px;
   border-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-}
-
-.single-service-more-services {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin: 30px;
-} 
-
-.single-service-more-services-card {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  align-items: center;
-  flex-direction: column; 
-  display: flex;
-  width: 280px;
-}
-
-.single-service-more-services-icon {
-  color: #c00;
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.more-services-title h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-top: 30px;
-}
-
-.more-services-title p {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #666666;
-}
-
-.single-service-more-services-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-}
-
-.single-service-more-services-link {
-  color: black;
-  text-decoration: none;
-  margin-bottom: 10px;
-}
-
-.single-service-more-services-link:hover {
-  color: #c00;
-}
-
-.single-service-info {
-  flex: 1;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .single-service-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .single-service-images-container {
-    width: 90%;
-    height: 300px;
-  }
-
-  .single-service-info {
-    width: 90%;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .single-service-content {
-    flex-direction: column;
-  }
-
-  .single-service-images-container {
-    width: 100%;
-    height: 250px;
-  }
-
-  .single-service-more-services {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* Image Carousel Specific Styles */
-.single-service-images-container {
-  position: relative;
-  width: 600px;
-  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -141,34 +40,18 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-.single-service-package-title {
-  text-align: center;
-  font-weight: bolder;
-  font-size: 2rem;
-  margin-bottom: 30px;
-} 
-
-.single-service-pricing{
-  margin-top: 30px;
+.single-service-info {
+  flex: 1 1 400px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding: 0 10px;
 }
 
-.single-service-package-description {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.25rem; 
-  color: #666666;
-  margin-bottom: 60px;
-}
-
-.more-services-description{
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-/* Localized Button Styles for Image Carousel */
+/* Carousel Buttons */
 .carousel-button {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
@@ -186,10 +69,159 @@
 
 .carousel-prev {
   left: 10px;
-  transform: translateY(-50%);
 }
 
 .carousel-next {
   right: 10px;
-  transform: translateY(-50%);
+}
+
+/* More Services Section */
+.single-service-more-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+.single-service-more-services-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+}
+
+.single-service-more-services-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.single-service-more-services-link {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.single-service-more-services-link:hover {
+  color: #c00;
+}
+
+.single-service-more-services-icon {
+  color: #c00;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.more-services-title h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.more-services-title p,
+.more-services-description {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666666;
+}
+
+/* Pricing (if enabled) */
+.single-service-package-title {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.single-service-pricing {
+  margin-top: 30px;
+}
+
+.single-service-package-description {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 1.25rem;
+  color: #666666;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .single-service-container {
+    padding: 0 3%;
+  }
+
+  .single-service-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .single-service-images-container {
+    width: 100%;
+    height: 350px;
+  }
+
+  .single-service-info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .single-service-title {
+    font-size: 1.75rem;
+  }
+
+  .single-service-images-container {
+    height: 280px;
+  }
+
+  .carousel-button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .single-service-more-services-card {
+    width: 90%;
+  }
+
+  .more-services-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .more-services-title p {
+    font-size: 1rem;
+  }
+
+  .single-service-info {
+    font-size: 1rem;
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .single-service-title {
+    font-size: 1.5rem;
+  }
+
+  .single-service-images-container {
+    height: 200px;
+  }
+
+  .single-service-info {
+    font-size: 0.95rem;
+  }
+
+  .carousel-button {
+    font-size: 14px;
+    padding: 8px;
+  }
 }

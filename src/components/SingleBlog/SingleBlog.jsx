@@ -3,8 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import './SingleBlog.css';
 import axios from 'axios';
 import { AllBlogs, getBlogsByCategory, getSingleBlog } from '../../lib/blogs';
+import Spinner from '../LoadingSpinner/Spinner';
 
-const baseUrl = "http://localhost:5050";
+const baseUrl = "https://sonicsignal-website.onrender.com";
 
 const SingleBlog = () => {
   const { id } = useParams();
@@ -81,8 +82,7 @@ const SingleBlog = () => {
 
   if (isLoading) return (
     <div className="loading-container">
-      <div className="loading-spinner"></div>
-      <p>Loading post...</p>
+            <Spinner message="Loading post..." />   
     </div>
   );
 

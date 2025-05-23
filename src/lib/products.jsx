@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:5050/api"
+const baseUrl = "https://sonicsignal-website.onrender.com/api"
 
 export async function AllProducts() {
     try {

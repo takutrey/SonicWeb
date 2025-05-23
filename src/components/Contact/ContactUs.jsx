@@ -1,21 +1,75 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { FaFacebookF, FaWhatsapp, FaPhone, FaLinkedinIn } from 'react-icons/fa';
 import '../Contact/ContactUs.css';
 import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
+
+const baseUrl = "https://sonicsignal-website.onrender.com/api";
 
 const Contact = () => {
   const recaptchaRef = useRef(null);
+  const formRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
-    if (recaptchaRef.current) {
-      recaptchaRef.current.execute(); // Trigger ReCAPTCHA verification
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      if (recaptchaRef.current) {
+        recaptchaRef.current.execute();
+      } else {
+        throw new Error('ReCAPTCHA not loaded');
+      }
+    } catch (error) {
+      console.error("ReCAPTCHA error:", error);
+      setIsSubmitting(false);
+      setSubmitStatus({ success: false, message: 'Verification failed' });
     }
   };
 
-  const onChange = (token) => {
-    console.log("ReCAPTCHA token:", token);
-    // You can now send form data along with this token to your backend
+  const onChange = async (token) => {
+    if (!token) {
+      setIsSubmitting(false);
+      setSubmitStatus({ success: false, message: 'Verification failed' });
+      return;
+    }
+
+    const formData = new FormData(formRef.current);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+      token
+    };
+
+    try {
+      const response = await axios.post(`${baseUrl}/contactus`, data);
+      console.log("Response:", response.data);
+
+      if(response.data.success){ 
+      setSubmitStatus({ success: true, message: 'Message sent successfully!' });
+      } else {
+            throw new Error(response.data.error || 'Failed to send message');
+
+      }
+      
+      formRef.current.reset();
+    } catch (error) {
+       console.error("Submission error:", error);
+      const errorMessage = error.response?.data?.error || 
+                         error.message || 
+                         'Failed to send message. Please try again later.';
+      
+      setSubmitStatus({ success: false, message: errorMessage });
+    } finally {
+      setIsSubmitting(false);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+    }
   };
 
   return (
@@ -58,28 +112,38 @@ const Contact = () => {
         </div>
 
         <div className="contact-form-container">
-          <h2>Contact Form</h2>
-          <form action="#" method="POST" onSubmit={handleSubmit}>
-            <label htmlFor="name">Full Name</label>
-            <input type="text" id="name" name="name" required />
-            
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required />
-            
-            <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+        <h2>Contact Form</h2>
+        {submitStatus && (
+          <div className={`alert ${submitStatus.success ? 'success' : 'error'}`}>
+            {submitStatus.message}
+          </div>
+        )}
+        <form ref={formRef} onSubmit={handleSubmit}>
+          <label htmlFor="name">Full Name</label>
+          <input type="text" id="name" name="name" required />
+          
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" name="email" required />
 
-            <button type="submit" className="submit-btn">Submit</button>
+          <label htmlFor="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
 
-            {/* Invisible ReCAPTCHA */}
-            <ReCAPTCHA 
-              ref={recaptchaRef}
-              size='invisible' 
-              sitekey='6LcAJ-gqAAAAAODPuFgQKNYA0IAA9vh-i6iMaD1u' 
-              onChange={onChange} 
-            />
-          </form>
-        </div>
+          <button 
+            type="submit" 
+            className="submit-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Sending...' : 'Submit'}
+          </button>
+
+          <ReCAPTCHA 
+            ref={recaptchaRef}
+            size="invisible" 
+            sitekey="6Le2rjYrAAAAAAM5BoYKfQANtQU6Zv46_aMsOPrp"
+            onChange={onChange}
+          />
+        </form>
+      </div>
       </section>
     </div>
   );
