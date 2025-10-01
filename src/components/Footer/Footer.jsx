@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import '../Footer/Footer.css' 
-import SonicLogo from "../../assets/images/sonicsignal-logo.png"
+import SonicLogo from "/images/sonicsignal-logo.png"
 import { Link, useParams } from 'react-router-dom'
 import { FaFacebook } from 'react-icons/fa6'
 import { FaLinkedin, FaMailBulk, FaPhone, FaWhatsapp } from 'react-icons/fa';

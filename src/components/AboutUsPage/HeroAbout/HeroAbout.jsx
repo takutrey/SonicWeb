@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './HeroAbout.css';
-import imageOne from "../../../assets/images/technician-doing-system-analysis-using-tablet-doing-needed-adjustments.jpg"
-import imageTwo from "../../../assets/images/group-technicians-doing-brainstorming-reconfiguring-server-farm.jpg"
-import imageThree from "../../../assets/images/network-switch-with-cables.jpg"
+import imageOne from "/images/technician-doing-system-analysis-using-tablet-doing-needed-adjustments.jpg"
+import imageTwo from "/images/group-technicians-doing-brainstorming-reconfiguring-server-farm.jpg"
+import imageThree from "/images/network-switch-with-cables.jpg"
 
 const HeroAbout = () => {
   const images = [
@@ -69,7 +69,7 @@ const HeroAbout = () => {
       
       {/* Content that stays stable */}
       <div className="hero-about-content">
-        <h1>About Sonic</h1>
+        <h1>About Sonicsignal Technologies</h1>
         <p>We are a passionate team dedicated to creating innovative solutions for our clients.</p>
       </div>
     </section>

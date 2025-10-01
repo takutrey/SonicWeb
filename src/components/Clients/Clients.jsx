@@ -1,9 +1,9 @@
 import React from 'react'; 
 import './Clients.css';
-import Harare from '../../assets/images/Clients/Harare.svg.png';
-import netone from '../../assets/images/Clients/netone.png'; 
-import Pizza from '../../assets/images/Clients/Pizza.svg.webp'; 
-import SKLogo from '../../assets/images/Clients/sterkinekor.png';
+import Harare from '/images/Clients/Harare.svg.png';
+import netone from '/images/Clients/netone.png'; 
+import Pizza from '/images/Clients/Pizza.svg.webp'; 
+import SKLogo from '/images/Clients/sterkinekor.png';
 
 const Clients = () => { 
 

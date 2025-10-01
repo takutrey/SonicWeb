@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import * as LucideIcons from 'lucide-react';
 import '../ServicesPage/ServicesPage.css';
 import services from '../../data/services.json'; 
-import Servicesimage from "../../assets/images/group-technicians-doing-brainstorming-reconfiguring-server-farm.jpg"
 
 const getIcon = (iconName) => {
   const ServiceIcon = FaIcons[iconName] || LucideIcons[iconName];

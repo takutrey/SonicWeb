@@ -1,379 +1,372 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { X } from "lucide-react";
 import "./CheckoutForm.css";
+// import EcocashModal from "../../modals/Ecocash/Ecocash";
+// import MastercardModal from "../../modals/MasterCard/MasterCard";
+import {
+  setOrderType,
+  setCustomerDetails,
+  setItems,
+  setPaymentMethod,
+  setPaymentDetails,
+  resetCheckout,
+  placeOrder,
+} from "../../lib/orderDetails";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { isValidPhoneNumber } from "react-phone-number-input";
 import axios from "axios";
-import {v4 as uuidV4} from 'uuid';
+import { toast } from "sonner";
 
+const baseUrl = "http://localhost:5050/api";
 
-const CheckoutForm = ({ onSubmit, total, items }) => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    province: "",
-    paymentMethod: "credit",
-    country: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const CheckoutForm = ({ onSubmit, items: initialItems }) => {
+  const dispatch = useDispatch();
+  const {
+    orderType,
+    customer,
+    items,
+    subtotal,
+    paymentMethod,
+    paymentDetails,
+    orderPlaced,
+    isLoading,
+  } = useSelector((state) => state.checkout);
+
+  const [step, setStep] = useState(1);
   const [errors, setErrors] = useState({});
-  const [orderPlaced, setOrderPlaced] = useState(false); 
-  const [orderNumber, setOrderNumber] = useState(null);
+  const [activePaymentModal, setActivePaymentModal] = useState(null);
+  const [checkingEmail, setCheckingEmail] = useState(false);
+  // Initialize items in Redux
+  useEffect(() => {
+    // dispatch(setItems(initialItems));
+  }, [initialItems]);
 
-  const handleChange = (e) => {
+  // ----------------- Handlers -----------------
+
+  const handleOrderTypeSelect = (type) => {
+    // dispatch(setOrderType(type));
+    setStep(2);
+  };
+
+  const handleCustomerChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    
-    // Clear error when field is being edited
+
+    // dispatch(setCustomerDetails({ [name]: value }));
+
+    // Clear errors
     if (errors[name]) {
-      setErrors({
-        ...errors,
-        [name]: null,
-      });
+      setErrors({ ...errors, [name]: null });
     }
   };
 
-  const validateForm = () => {
+  const validateStep2 = async () => {
     const newErrors = {};
-    
-    // Required fields
-    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Invalid email format";
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-    if (!formData.address.trim()) newErrors.address = "Address is required";
-    if (!formData.city.trim()) newErrors.city = "City is required";
-    if (!formData.province.trim()) newErrors.province = "Province is required";
-    if (!formData.country.trim()) newErrors.country = "Country is required";
-    
-    
+
+    if (!customer.fullName.trim()) newErrors.fullName = "Full name is required";
+    if (!customer.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(customer.email)) {
+      newErrors.email = "Invalid email format";
+    } else {
+      try {
+        setCheckingEmail(true);
+        const response = await axios.get(`${baseUrl}/check-email/email-check`, {
+          params: { email: customer.email },
+        });
+
+        if (!response.data.exists) {
+          newErrors.email = "Email address does not exist";
+        }
+      } catch (error) {
+        console.error("Error checking email:", error);
+        newErrors.email = "Unable to verify email right now";
+      } finally {
+        setCheckingEmail(false);
+      }
+    }
+
+    if (!customer.phone) newErrors.phone = "Phone number is required";
+
+    if (orderType === "delivery") {
+      if (!customer.phone) newErrors.phone = "Phone number is required";
+      else if (!isValidPhoneNumber(customer.phone))
+        newErrors.phone = "Invalid phone number";
+
+      if (!customer.address?.trim()) newErrors.address = "Address is required";
+      if (!customer.city?.trim()) newErrors.city = "City is required";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const generateOrderNumber = () => {
-    const newOrderNumber = uuidV4();
-    setOrderNumber(newOrderNumber);
-    return newOrderNumber;
-  }
+  const handleStep2Continue = async () => {
+    const isValid = await validateStep2();
 
-
-  const addCustomerData = async (orderData) => {
-    try {
-      const response = await axios.post("https://sonicsignal-website.onrender.com/api/add-customer", orderData);
-      console.log("Customer added successfully", response.data);
-      return true; 
-      
-    } catch (error) {
-      console.error("Error saving customer", error);
-      return false;
-      
+    if (isValid) {
+      setStep(3);
     }
-  }
-
-  const sendEmailInvoice = async (orderData) => {
-    try {
-      const response = await axios.post("https://sonicsignal-website.onrender.com/api/send-invoice", {
-        email: orderData.customer.email,
-        orderData: orderData
-      });
-      console.log("Invoice email sent successfully", response.data);
-      return true;
-
-    } catch (error) {
-      console.error("Error sending invoice email", error);
-      return false;
-      
-    }
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-    
-    setIsSubmitting(true);
-
-    const generatedOrderNumber = generateOrderNumber();
-
-    
-
-     // Calculate tax (assuming 8% tax rate)
-  const taxRate = 0.08;
-  const taxAmount = total * taxRate;
-  const grandTotal = total + taxAmount; 
-
-    const orderData = {
-      orderNumber: generatedOrderNumber, 
-      orderDate: new Date().toISOString(),
-      customer: {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        city: formData.city,
-        province: formData.province,
-        country: formData.country,
-      },
-      items: items.map((item) => ({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity,
-      })),
-      paymentMethod: formData.paymentMethod,
-      subtotal: total,
-      tax: taxAmount,
-      total: grandTotal,
-    }; 
-
-    console.log(orderData);
-
-    try {
-
-      console.log("Email sending")
-      const emailSent = await sendEmailInvoice(orderData);
-      if (!emailSent) {
-        console.warn("Order processed but email confirmation failed");
-      } 
-
-      const customerSaved = await addCustomerData(orderData); 
-      if(!customerSaved){
-        console.warn("Customer data not saved")
-      }
-      
-    } catch (error) {
-      console.error("Error placing order", error);
-      alert("An error occurred while placing your order. Please try again later.");
-      
-    } finally{
-      setIsSubmitting(false);
-    }
-    
   };
 
-  // Calculate tax (assuming 8% tax rate)
-  const taxRate = 0.08;
-  const taxAmount = total * taxRate;
-  const grandTotal = total + taxAmount;
+  const handlePaymentMethodSelect = (method) => {
+    // dispatch(setPaymentMethod(method));
+  };
 
- if(orderPlaced) {
-  return(
-    <div className="checkout-success">
-    <div className="success-icon">✓</div>
-    <h2>Order Placed Successfully!</h2>
-    <p>Your order number is: <strong>{orderNumber}</strong></p>
-    <p>We've sent a confirmation email to: <strong>{formData.email}</strong></p>
-    <p>Thank you for shopping with us!</p>
-    <button className="continue-shopping-button" onClick={onClose}>Continue Shopping</button>
-  </div>
-);
+  const handlePlaceOrder = () => {
+    // if (!paymentMethod) {
+    //   alert("Please select a payment method first");
+    //   return;
+    // }
+    // setActivePaymentModal(paymentMethod);
+  };
+
+  const handlePaymentDetailsSubmit = async (details) => {
+    // if (!paymentMethod) {
+    //   console.error("Payment method not selected");
+    //   return;
+    // }
+    // dispatch(setPaymentDetails({ method: paymentMethod, details }));
+    // setActivePaymentModal(null);
+    // try {
+    //   const result = await dispatch(placeOrder()).unwrap();
+    //   if (result.paymentSuccess) {
+    //     toast.success("Order placed successfully");
+    //   } else {
+    //     toast.error("Payment failed. Please try again");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   const message =
+    //     error.error || error.message || error || "Something went wrong";
+    //   toast.error(message);
+    // }
+  };
+
+  // ----------------- Calculations -----------------
+  const taxRate = 0.08;
+  const taxAmount = subtotal * taxRate;
+  const grandTotal = subtotal + taxAmount;
+
+  // ----------------- Render -----------------
+  if (orderPlaced) {
+    return (
+      <div className="checkout-success">
+        <div className="success-icon">✓</div>
+        <h2>Order Placed Successfully!</h2>
+        <p>
+          Your order type: <strong>{orderType}</strong>
+        </p>
+        <p>
+          We've sent a confirmation email to: <strong>{customer.email}</strong>
+        </p>
+        <button
+          className="continue-shopping-button"
+          onClick={() => {
+            // dispatch(resetCheckout());
+            onSubmit();
+          }}
+        >
+          Continue Shopping
+        </button>
+      </div>
+    );
   }
 
- 
-
-  return (
-    <div className="checkout-container">
-      <h2 className="checkout-title">Checkout</h2>
-      
-      <div className="order-summary">
-        <h3>Order Summary</h3>
-        <div className="order-items">
-          {items.map((item) => (
-            <div key={item.id} className="order-item">
-              <div className="item-info">
-                <div className="item-image">
-                  <img src={`https://sonicsignal-website.onrender.com/${item.image}`} alt={item.name} />
-                </div>
-                <div className="item-details">
-                  <h4>{item.name}</h4>
-                  <p className="item-price">${parseFloat(item.price).toFixed(2)} × {item.quantity}</p>
-                </div>
-              </div>
-              <div className="item-subtotal">
-                ${parseFloat(item.price * item.quantity).toFixed(2)}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="order-totals">
-          <div className="subtotal">
-            <span>Subtotal</span>
-            <span>${parseFloat(total).toFixed(2)}</span>
+  // ----------------- Step 1: Order Type -----------------
+  if (step === 1) {
+    return (
+      <div className="checkout-container">
+        <h2 className="checkout-title">
+          How would you like to receive your order?
+        </h2>
+        <div className="order-type-selection">
+          <div
+            className={`order-type-option ${
+              orderType === "delivery" ? "selected" : ""
+            }`}
+            onClick={() => handleOrderTypeSelect("delivery")}
+          >
+            <div className="option-icon">🚚</div>
+            <h3>Delivery</h3>
+            <p>Get your order delivered to your doorstep</p>
           </div>
-          <div className="tax">
-            <span>Tax (8%)</span>
-            <span>${parseFloat(taxAmount).toFixed(2)}</span>
-          </div>
-          <div className="grand-total">
-            <span>Total</span>
-            <span>${parseFloat(grandTotal).toFixed(2)}</span>
+          <div
+            className={`order-type-option ${
+              orderType === "pickup" ? "selected" : ""
+            }`}
+            onClick={() => handleOrderTypeSelect("pickup")}
+          >
+            <div className="option-icon">🏪</div>
+            <h3>Pickup</h3>
+            <p>Pick up your order at our location</p>
           </div>
         </div>
       </div>
-      
-      <form onSubmit={handleSubmit} className="checkout-form">
-        <div className="form-section">
-          <h3>Personal Information</h3>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                className={errors.firstName ? "error" : ""}
-              />
-              {errors.firstName && <span className="error-message">{errors.firstName}</span>}
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                className={errors.lastName ? "error" : ""}
-              />
-              {errors.lastName && <span className="error-message">{errors.lastName}</span>}
-            </div>
-          </div>
-          
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={errors.email ? "error" : ""}
-              />
-              {errors.email && <span className="error-message">{errors.email}</span>}
-            </div>
-            <div className="form-group">
-              <label htmlFor="phone">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={errors.phone ? "error" : ""}
-              />
-              {errors.phone && <span className="error-message">{errors.phone}</span>}
-            </div>
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="address">Address</label>
+    );
+  }
+
+  // ----------------- Step 2: Customer Details -----------------
+  if (step === 2) {
+    return (
+      <div className="checkout-container">
+        <button className="back-button" onClick={() => setStep(1)}>
+          ← Back
+        </button>
+        <h2 className="checkout-title">
+          {orderType === "delivery" ? "Delivery Info" : "Pickup Info"}
+        </h2>
+
+        <form className="checkout-form">
+          <div className="form-section">
+            <label>Full Name *</label>
             <input
-              type="text"
-              id="address"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              className={errors.address ? "error" : ""}
+              name="fullName"
+              value={customer.fullName}
+              onChange={handleCustomerChange}
+              className={errors.fullName ? "error" : ""}
+              placeholder="John Doe"
             />
-            {errors.address && <span className="error-message">{errors.address}</span>}
+            {errors.fullName && (
+              <span className="error-message">{errors.fullName}</span>
+            )}
+
+            <label>Email *</label>
+            <div className="input-with-spinner">
+              <input
+                name="email"
+                value={customer.email}
+                onChange={handleCustomerChange}
+                className={errors.email ? "error" : ""}
+                placeholder="john@example.com"
+              />
+              {checkingEmail && <span className="spinner"></span>}
+            </div>
+            {errors.email && (
+              <span className="error-message">{errors.email}</span>
+            )}
+
+            <label>Phone {orderType === "delivery" ? "*" : "*"}</label>
+            <div
+              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm 
+                     focus-within:ring-2 focus-within:ring-ring 
+                     focus-within:border-ring transition-colors mb-3"
+            >
+              <PhoneInput
+                international
+                defaultCountry="ZW"
+                value={customer.phone}
+                onChange={(value) =>
+                  // dispatch(setCustomerDetails({ phone: value }))
+                  console.log(value)
+                }
+                placeholder="Enter phone number"
+                className="phone-input-inner w-full"
+              />
+            </div>
+            {errors.phone && (
+              <span className="error-message">{errors.phone}</span>
+            )}
+
+            {orderType === "delivery" && (
+              <>
+                <label>Address *</label>
+                <input
+                  name="address"
+                  value={customer.address}
+                  onChange={handleCustomerChange}
+                  className={errors.address ? "error" : ""}
+                  placeholder="123 Main St"
+                />
+                {errors.address && (
+                  <span className="error-message">{errors.address}</span>
+                )}
+
+                <label>City *</label>
+                <input
+                  name="city"
+                  value={customer.city}
+                  onChange={handleCustomerChange}
+                  className={errors.city ? "error" : ""}
+                  placeholder="Harare"
+                />
+                {errors.city && (
+                  <span className="error-message">{errors.city}</span>
+                )}
+              </>
+            )}
           </div>
-          
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="city">City</label>
-              <input
-                type="text"
-                id="city"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                className={errors.city ? "error" : ""}
-              />
-              {errors.city && <span className="error-message">{errors.city}</span>}
-            </div>
-            <div className="form-group">
-              <label htmlFor="province">Province</label>
-              <input
-                type="text"
-                id="province"
-                name="province"
-                value={formData.state}
-                onChange={handleChange}
-                className={errors.state ? "error" : ""}
-              />
-              {errors.state && <span className="error-message">{errors.state}</span>}
-            </div>
-          </div>
-          
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="country">Country</label>
-              <input
-                type="text"
-                id="country"
-                name="country"
-                value={formData.country}
-                onChange={handleChange}
-                className={errors.country ? "error" : ""}
-              />
-              {errors.country && <span className="error-message">{errors.country}</span>}
-            </div>
-          </div>
-        </div>
-        
-        <div className="form-section">
-          <h3>Payment Information</h3>
-          <div className="payment-methods">
-            <div className="payment-method">
-              <input
-                type="radio"
-                id="cash"
-                name="paymentMethod"
-                value="cash"
-                checked={formData.paymentMethod === "cash"}
-                onChange={handleChange}
-              />
-              <label htmlFor="cash">Cash</label>
-            </div>
-            <div className="payment-method">
-              <input
-                type="radio"
-                id="card"
-                name="paymentMethod"
-                value="card"
-                checked={formData.paymentMethod === "card"}
-                onChange={handleChange}
-              />
-              <label htmlFor="card">Card</label>
-            </div>
-          </div>
-        
-          
-          {formData.paymentMethod === "card" && (
-            <div className="paypal-info">
-              <p>Card payments are unavailable.</p>
-            </div>
-          )}
-        </div>
-        
-        <div className="form-actions">
-          <button type="submit" className="place-order-button" disabled={isSubmitting}>
-            {isSubmitting ? "Processing..." : `Place Order - $${parseFloat(grandTotal).toFixed(2)}`}
+
+          <button
+            type="button"
+            className="continue-button"
+            onClick={handleStep2Continue}
+            disabled={checkingEmail}
+          >
+            {checkingEmail ? "Checking email..." : "Continue to Payment"}
           </button>
+        </form>
+      </div>
+    );
+  }
+
+  // ----------------- Step 3: Payment -----------------
+  return (
+    <div className="checkout-container">
+      <button className="back-button" onClick={() => setStep(2)}>
+        ← Back
+      </button>
+      <h2 className="checkout-title">Payment Method</h2>
+
+      <div className="payment-methods">
+        <div className="payment-method">
+          <input
+            type="radio"
+            id="mastercard"
+            checked={paymentMethod === "mastercard"}
+            onChange={() => handlePaymentMethodSelect("mastercard")}
+          />
+          <label htmlFor="mastercard">💳 MasterCard</label>
         </div>
-      </form>
+        <div className="payment-method">
+          <input
+            type="radio"
+            id="ecocash"
+            checked={paymentMethod === "ecocash"}
+            onChange={() => handlePaymentMethodSelect("ecocash")}
+          />
+          <label htmlFor="ecocash">📱 EcoCash</label>
+        </div>
+      </div>
+
+      {/* {activePaymentModal === "mastercard" && (
+        <MastercardModal
+          show
+          onClose={() => setActivePaymentModal(null)}
+          onSubmit={handlePaymentDetailsSubmit}
+        />
+      )}
+      {activePaymentModal === "ecocash" && (
+        <EcocashModal
+          show
+          onClose={() => setActivePaymentModal(null)}
+          onSubmit={handlePaymentDetailsSubmit}
+        />
+      )} */}
+
+      <button
+        className="place-order-button"
+        disabled={isLoading || !paymentMethod}
+        onClick={handlePlaceOrder}
+      >
+        {isLoading
+          ? "Processing..."
+          : `Place Order - $${(orderType === "delivery"
+              ? grandTotal + 2
+              : grandTotal
+            ).toFixed(2)}`}
+      </button>
     </div>
   );
 };

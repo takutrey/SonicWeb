@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import './SingleBlog.css';
-import axios from 'axios';
-import { AllBlogs, getBlogsByCategory, getSingleBlog } from '../../lib/blogs';
-import Spinner from '../LoadingSpinner/Spinner';
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./SingleBlog.css";
+import axios from "axios";
+import { AllBlogs, getBlogsByCategory, getSingleBlog } from "../../lib/blogs";
+import Spinner from "../LoadingSpinner/Spinner";
+import { toast } from "sonner";
 
-const baseUrl = "https://sonicsignal-website.onrender.com";
+const baseUrl = "http://localhost:5050";
 
 const SingleBlog = () => {
   const { id } = useParams();
@@ -17,84 +18,90 @@ const SingleBlog = () => {
 
   const formatDateToWords = (dateString) => {
     const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Intl.DateTimeFormat('en-US', options).format(date);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Intl.DateTimeFormat("en-US", options).format(date);
   };
 
   useEffect(() => {
-    const fetchBlogPost = async() => {
+    const fetchBlogPost = async () => {
       setIsLoading(true);
       try {
         const response = await getSingleBlog(id);
-        console.log("Blog Post", response.data);
-        setPost(response.data); 
+        setPost(response.data);
         setIsLoaded(true);
       } catch (error) {
-        console.error("Error fetching blog post:", error);
+        toast.error("Error fetching blog post");
       } finally {
         setIsLoading(false);
       }
-    }
+    };
     fetchBlogPost();
   }, [id]);
 
   useEffect(() => {
     if (post) {
       const categoryId = post.blogCategoryId;
-  
+
       const fetchRelatedPosts = async () => {
         try {
           const response = await getBlogsByCategory(categoryId);
-          console.log("Related Categories", response.data);
           // Filter out the current post
-          setRelatedPosts(response.data.filter(item => item.id !== post.id).slice(0, 3));
+          setRelatedPosts(
+            response.data.filter((item) => item.id !== post.id).slice(0, 3)
+          );
         } catch (error) {
           console.error("Error fetching related posts:", error);
         }
       };
-  
+
       const fetchLatestPosts = async () => {
         try {
           const response = await AllBlogs();
-          setLatestPosts(response.data.filter(item => item.id !== post.id).slice(0, 3));
+          setLatestPosts(
+            response.data.filter((item) => item.id !== post.id).slice(0, 3)
+          );
         } catch (error) {
           console.error("Error fetching latest posts:", error);
-  
+
           // Fallback
           try {
             const allPostsResponse = await axios.get(`${baseUrl}/blog`);
             const filteredPosts = allPostsResponse.data
-              .filter(item => item.id !== post.id)
+              .filter((item) => item.id !== post.id)
               .sort((a, b) => new Date(b.date) - new Date(a.date))
               .slice(0, 3);
             setLatestPosts(filteredPosts);
           } catch (fallbackError) {
-            console.error("Error fetching fallback latest posts:", fallbackError);
+            console.error(
+              "Error fetching fallback latest posts:",
+              fallbackError
+            );
           }
         }
       };
-  
+
       fetchRelatedPosts();
       fetchLatestPosts();
     }
   }, [post]);
-  
 
-  if (isLoading) return (
-    <div className="loading-container">
-            <Spinner message="Loading post..." />   
-    </div>
-  );
+  if (isLoading)
+    return (
+      <div className="loading-container">
+        <Spinner message="Loading post..." />
+      </div>
+    );
 
-  if (!post) return (
-    <div className="error-container">
-      <h2>Post Not Found</h2>
-      <p>We couldn't find the blog post you're looking for.</p>
-      <Link to="/blog" className="back-button">
-        Back to SonicHub
-      </Link>
-    </div>
-  );
+  if (!post)
+    return (
+      <div className="error-container">
+        <h2>Post Not Found</h2>
+        <p>We couldn't find the blog post you're looking for.</p>
+        <Link to="/blog" className="back-button">
+          Back to SonicHub
+        </Link>
+      </div>
+    );
 
   return (
     <div className="blog-post-container">
@@ -110,20 +117,39 @@ const SingleBlog = () => {
         <div className="post-meta">
           <span className="post-date">{formatDateToWords(post.updatedAt)}</span>
           <span className="post-author"> By Sonicsignal Tech </span>
-          {post.blogCategoryId && <span className="post-category">{post.blogcategory.name}</span>}
+          {post.blogCategoryId && (
+            <span className="post-category">{post.blogcategory.name}</span>
+          )}
         </div>
-        <img 
-          src={`${baseUrl}/${post.coverImage}`} 
-          alt={post.title} 
-          className="blog-post-image" 
+        <img
+          src={`${baseUrl}/${post.coverImage}`}
+          alt={post.title}
+          className="blog-post-image"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = "/default-blog-image.jpg"; // Fallback image
           }}
         />
-        <div className="blog-post-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{post.tags && post.tags.map((tag, index) => (
-           <span key={index} style={{ backgroundColor: "#c00", borderRadius: 5 }}>#{tag}</span>
-        ))}</div>
+        <div
+          className="blog-post-tags"
+          style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}
+        >
+          {post.tags &&
+            post.tags.split(",").map((tag, index) => (
+              <span
+                key={index}
+                style={{
+                  backgroundColor: "#c00",
+                  color: "#fff",
+                  padding: "4px 8px",
+                  borderRadius: 5,
+                }}
+              >
+                #{tag.trim()}
+              </span>
+            ))}
+        </div>
+
         <div className="blog-post-content">{post.content}</div>
       </div>
 
@@ -136,9 +162,9 @@ const SingleBlog = () => {
               <div className="news-card" key={blog.id}>
                 <Link to={`/post/${blog.id}`} className="news-card-link">
                   <div className="news-card-content">
-                    <img 
-                      src={`${baseUrl}/${blog.coverImage}`} 
-                      alt={blog.title} 
+                    <img
+                      src={`${baseUrl}/${blog.coverImage}`}
+                      alt={blog.title}
                       className="news-image"
                       onError={(e) => {
                         e.target.onerror = null;
@@ -147,7 +173,9 @@ const SingleBlog = () => {
                     />
                     <div className="news-text">
                       <h4>{blog.title}</h4>
-                      <p className="news-date">{formatDateToWords(blog.updatedAt)}</p>
+                      <p className="news-date">
+                        {formatDateToWords(blog.updatedAt)}
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -166,9 +194,9 @@ const SingleBlog = () => {
               <div className="news-card" key={relatedPost.id}>
                 <Link to={`/post/${relatedPost.id}`} className="news-card-link">
                   <div className="news-card-content">
-                    <img 
-                      src={`${baseUrl}/${relatedPost.coverImage}`} 
-                      alt={relatedPost.title} 
+                    <img
+                      src={`${baseUrl}/${relatedPost.coverImage}`}
+                      alt={relatedPost.title}
                       className="news-image"
                       onError={(e) => {
                         e.target.onerror = null;
@@ -177,7 +205,9 @@ const SingleBlog = () => {
                     />
                     <div className="news-text">
                       <h4>{relatedPost.title}</h4>
-                      <p className="news-date">{formatDateToWords(relatedPost.updatedAt)}</p>
+                      <p className="news-date">
+                        {formatDateToWords(relatedPost.updatedAt)}
+                      </p>
                     </div>
                   </div>
                 </Link>

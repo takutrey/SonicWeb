@@ -14,7 +14,7 @@ const AboutUs = () => {
       <div className="about-container">
       <div className="about-title">
             <h2 className='about-title-head'>About Us</h2>
-            <p className='about-title-description'>Delve into knowing what Sonic is all about</p>
+            <p className='about-title-description'>Delve into knowing what Sonicsignal Technologies is all about</p>
           </div>
         <div className="about-content fade-in">
           <div className="about-image-wrapper">

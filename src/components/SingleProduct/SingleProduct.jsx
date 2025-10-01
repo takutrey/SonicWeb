@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ShoppingCart, ArrowLeft, Plus, Minus, X } from "lucide-react";
 import { toast } from "sonner";
-import { useCart } from "../../store/useCart";
+// import { useCart } from "../../store/useCart";
 import "./SingleProduct.css";
 import { getSingleProduct, getRelatedProducts } from "../../lib/products.jsx";
 import PropTypes from "prop-types";
 import Footer from "../Footer/Footer.jsx";
 
-const baseUrl = "https://sonicsignal-website.onrender.com";
+const baseUrl = "http://localhost:5050";
 
 const CartSidebar = ({ items, setIsCartOpen, updateQuantity, removeItem }) => {
   const total = items.reduce(
@@ -18,54 +18,91 @@ const CartSidebar = ({ items, setIsCartOpen, updateQuantity, removeItem }) => {
 
   return (
     <div className="cart-overlay">
-             <div className="cart-sidebar">
-               <div className="cart-content">
-                 <div className="cart-header">
-                   <h2 className="cart-title">Shopping Cart</h2>
-                   <button onClick={() => setIsCartOpen(false)} className="close-button">
-                     <X />
-                   </button>
-                 </div>
-                 <div className="cart-items">
-                   {items.length === 0 ? (
-                     <p className="cart-empty">
-                       Your cart is empty
-                       <button onClick={() => setIsCartOpen(false)} className="continue-shopping-button">Continue Shopping</button>
-                     </p>
-                   ) : (
-                     <div>
-                       {items.map((item) => (
-                         <div key={item.id} className="cart-item">
-                           <img src={`${baseUrl}/${item.image}`} alt={item.name} className="cart-item-image" />
-                           <div className="cart-item-details">
-                             <h3 className="cart-item-name">{item.name}</h3>
-                             <p className="cart-item-price">${parseFloat(item.price).toFixed(2)}</p>
-                             <div className="quantity-controls">
-                               <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))} className="quantity-button">-</button>
-                               <span>{item.quantity}</span>
-                               <button onClick={() => updateQuantity(item.id, Math.max(1, item.quantity + 1))} className="quantity-button">+</button>
-                             </div>
-                           </div>
-                           <button onClick={() => removeItem(item.id)} className="remove-button">
-                             <X />
-                           </button>
-                         </div>
-                       ))}
-                     </div>
-                   )}
-                 </div>
-                 {items.length > 0 && (
-                   <div className="cart-footer">
-                     <div className="cart-total">
-                       <span>Total</span>
-                       <span>${parseFloat(total).toFixed(2)}</span>
-                     </div>
-                     <button className="checkout-button">Checkout</button>
-                   </div>
-                 )}
-               </div>
-             </div>
-           </div>
+      <div className="cart-sidebar">
+        <div className="cart-content">
+          <div className="cart-header">
+            <h2 className="cart-title">Shopping Cart</h2>
+            <button
+              onClick={() => setIsCartOpen(false)}
+              className="close-button"
+            >
+              <X />
+            </button>
+          </div>
+          <div className="cart-items">
+            {items.length === 0 ? (
+              <p className="cart-empty">
+                Your cart is empty
+                <button
+                  onClick={() => setIsCartOpen(false)}
+                  className="continue-shopping-button"
+                >
+                  Continue Shopping
+                </button>
+              </p>
+            ) : (
+              <div>
+                {items.map((item) => (
+                  <div key={item.id} className="cart-item">
+                    <img
+                      src={`${baseUrl}/${item.image}`}
+                      alt={item.name}
+                      className="cart-item-image"
+                    />
+                    <div className="cart-item-details">
+                      <h3 className="cart-item-name">{item.name}</h3>
+                      <p className="cart-item-price">
+                        ${parseFloat(item.price).toFixed(2)}
+                      </p>
+                      <div className="quantity-controls">
+                        <button
+                          onClick={() =>
+                            updateQuantity(
+                              item.id,
+                              Math.max(1, item.quantity - 1)
+                            )
+                          }
+                          className="quantity-button"
+                        >
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() =>
+                            updateQuantity(
+                              item.id,
+                              Math.max(1, item.quantity + 1)
+                            )
+                          }
+                          className="quantity-button"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      className="remove-button"
+                    >
+                      <X />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          {items.length > 0 && (
+            <div className="cart-footer">
+              <div className="cart-total">
+                <span>Total</span>
+                <span>${parseFloat(total).toFixed(2)}</span>
+              </div>
+              <button className="checkout-button">Checkout</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -78,66 +115,66 @@ CartSidebar.propTypes = {
 
 const SingleProduct = () => {
   const { productId } = useParams();
-const [product, setProduct] = useState(null);
-const [quantity, setQuantity] = useState(1);
-const [relatedProducts, setRelatedProducts] = useState([]);
-const [categoryId, setCategoryId] = useState("");
-const { items, addItem, removeItem, updateQuantity } = useCart();
-const [isCartOpen, setIsCartOpen] = useState(false);
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
+  // const { items, addItem, removeItem, updateQuantity } = useCart();
+  const items = []; // Empty array since cart is disabled
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-useEffect(() => {
-  async function fetchProduct() {
-    try {
-      const response = await getSingleProduct(productId);
-      setProduct(response.data || {});
-      setCategoryId(response.data?.category?.id);
-    } catch (error) {
-      console.error("Error fetching product:", error);
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const response = await getSingleProduct(productId);
+        setProduct(response.data || {});
+        setCategoryId(response.data?.category?.id);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
     }
-  }
-  fetchProduct();
-}, [productId]);
+    fetchProduct();
+  }, [productId]);
 
-useEffect(() => {
-  async function fetchRelated() {
-    try {
-      if (!categoryId) return; // Ensure categoryId is valid before fetching
-      const response = await getRelatedProducts(categoryId, productId); // Pass productId to exclude it
-      setRelatedProducts(response.data || []);
-    } catch (error) {
-      console.error("Error fetching related products:", error);
+  useEffect(() => {
+    async function fetchRelated() {
+      try {
+        if (!categoryId) return; // Ensure categoryId is valid before fetching
+        const response = await getRelatedProducts(categoryId, productId); // Pass productId to exclude it
+        setRelatedProducts(response.data || []);
+      } catch (error) {
+        console.error("Error fetching related products:", error);
+      }
     }
-  }
-  if (categoryId) fetchRelated();
-}, [categoryId, productId]); // Ensure it updates when productId changes
-
+    if (categoryId) fetchRelated();
+  }, [categoryId, productId]); // Ensure it updates when productId changes
 
   const handleAddToCart = () => {
-    const productInCart = items.find((item) => item.id === product.id);
-    if (productInCart) {
-      updateQuantity(product.id, productInCart.quantity + quantity);
-    } else {
-      addItem({ ...product, quantity });
-    }
-    toast.success("Added to cart");
+    // const productInCart = items.find((item) => item.id === product.id);
+    // if (productInCart) {
+    //   updateQuantity(product.id, productInCart.quantity + quantity);
+    // } else {
+    //   addItem({ ...product, quantity });
+    // }
+    // toast.success("Added to cart");
+    console.log("Add to cart functionality disabled");
   };
 
   if (!product) {
     return <div className="loading">Loading product...</div>;
   }
 
-  
   return (
     <div className="single-product-page">
       <header className="header">
         <div className="container header-content">
           <h1 className="brand-logo">SonicShop</h1>
-          <button className="cart-button" onClick={() => setIsCartOpen(true)}>
+          {/* <button className="cart-button" onClick={() => setIsCartOpen(true)}>
             <ShoppingCart />
             {items.length > 0 && (
               <span className="cart-count">{items.length}</span>
             )}
-          </button>
+          </button> */}
         </div>
       </header>
 
@@ -154,62 +191,118 @@ useEffect(() => {
               className="main-product-image"
             />
           </div>
-          <div className="product-info-section"> 
+          <div className="product-info-section">
             <div className="product-info-content">
-            <div className="product-info-left">
-              <div className="product-details">
-                <div className="product-details-title">
-                    <h2>{product.name}|{product?.brand || ""}</h2>
-                    <p className="product-category">{product?.category?.name}</p>
+              <div className="product-info-left">
+                <div className="product-details">
+                  <div className="product-details-title">
+                    <h2>
+                      {product.name}|{product?.brand || ""}
+                    </h2>
+                    <p className="product-category">
+                      {product?.category?.name}
+                    </p>
+                  </div>
                 </div>
-              </div>                    
-               <div className="product-price">
-                 ${product.price}
-               </div>
-               <div className="product-in-stock">
-               <div className="stock-indicator" style={{display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '10px' }}>
-          {product.stock_status === "In stock" ? (
-            <span style={{ color: 'green', display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <div style={{ height: '10px', width: '10px', borderRadius: '50%', backgroundColor: 'green' }}></div>
-              In Stock
-            </span>
-          ) : product.stock_status === "Pre-order" ? (
-            <span style={{ color: 'orange', display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <div style={{ height: '10px', width: '10px', borderRadius: '50%', backgroundColor: 'orange' }}></div>
-              Pre-Order
-            </span>
-          ) : (
-            <span style={{ color: 'red', display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <div style={{ height: '10px', width: '10px', borderRadius: '50%', backgroundColor: 'red' }}></div>
-              Out of Stock
-            </span>
-          )}
-        </div>
-               </div>
-               <div className="product-description-container">
-                <h2 className="product-description-title">
-                  Description
-                </h2> 
-                <p className="product-description-details">{product.description}</p>
-               </div>         
+                <div className="product-price">${product.price}</div>
+                <div className="product-in-stock">
+                  <div
+                    className="stock-indicator"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginTop: "10px",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {product.stock_status === "In stock" ? (
+                      <span
+                        style={{
+                          color: "green",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            height: "10px",
+                            width: "10px",
+                            borderRadius: "50%",
+                            backgroundColor: "green",
+                          }}
+                        ></div>
+                        In Stock
+                      </span>
+                    ) : product.stock_status === "Pre-order" ? (
+                      <span
+                        style={{
+                          color: "orange",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            height: "10px",
+                            width: "10px",
+                            borderRadius: "50%",
+                            backgroundColor: "orange",
+                          }}
+                        ></div>
+                        Pre-Order
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          color: "red",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            height: "10px",
+                            width: "10px",
+                            borderRadius: "50%",
+                            backgroundColor: "red",
+                          }}
+                        ></div>
+                        Out of Stock
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="product-description-container">
+                  <h2 className="product-description-title">Description</h2>
+                  <p className="product-description-details">
+                    {product.description}
+                  </p>
+                </div>
+              </div>
+
+              {product.specifications && (
+                <div className="product-info-right">
+                  <div className="product-specifications">
+                    <h3 className="product-specifications-title">
+                      Specifications
+                    </h3>
+                    <ul>
+                      {Object.entries(product.specifications).map(
+                        ([key, value]) => (
+                          <li key={key}>
+                            <strong>{key}:</strong> {value}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div className="product-info-right">
-               <div className="product-specifications">
-              <h3 className="product-specifications-title">Specifications</h3>
-              <ul>
-                {product.specifications &&
-                  Object.entries(product.specifications).map(([key, value]) => (
-                    <li key={key}>
-                      <strong>{key}:</strong> {value}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-            </div>
-
-            </div>
-            
             <div className="add-to-cart-section">
               <div className="quantity-selector">
                 <button
@@ -226,12 +319,17 @@ useEffect(() => {
                   <Plus size={16} />
                 </button>
               </div>
-             
-              <button onClick={handleAddToCart} className="add-to-cart-btn" disabled={product.stock_status === "Out of stock" || product.stock_status === "Pre-order"}>
-                {items.some((item) => item.id === product.id)
-                  ? "Added to Cart"
-                  : "Add to Cart"}
-              </button>
+
+              {/* <button
+  onClick={handleAddToCart}
+  className="add-to-cart-btn"
+  disabled={
+    product.stock_status === "Out of stock" ||
+    product.stock_status === "Pre-order"
+  }
+>
+  Add to Cart (Disabled)
+</button> */}
             </div>
           </div>
         </div>
@@ -266,17 +364,16 @@ useEffect(() => {
         </div>
       )}
 
-      {isCartOpen && (
+      {/* {isCartOpen && (
         <CartSidebar
           items={items}
           setIsCartOpen={setIsCartOpen}
           updateQuantity={updateQuantity}
           removeItem={removeItem}
         />
-      )} 
+      )} */}
       <div className="single-product-footer-container">
-            <Footer />
-  
+        <Footer />
       </div>
     </div>
   );

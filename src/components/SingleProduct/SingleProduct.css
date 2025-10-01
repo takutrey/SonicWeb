@@ -43,14 +43,13 @@
   margin-bottom: 1rem;
   /* Ensure the product details are below the back link */
   clear: both;
-} 
+}
 
-.product-details-title h2{
-  font-size: 1.3rem; 
+.product-details-title h2 {
+  font-size: 1.3rem;
   font-weight: bold;
   text-transform: capitalize;
 }
-
 
 .product-image-section {
   display: flex;
@@ -76,7 +75,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-} 
+}
 
 .product-info-content {
   display: flex;
@@ -93,7 +92,7 @@
   font-weight: 600;
 }
 
-.product-in-stock{
+.product-in-stock {
   width: 100%;
 }
 
@@ -111,20 +110,18 @@
   color: #222222;
 }
 
-.product-description-container{
+.product-description-container {
   margin-top: 1rem;
   justify-content: left;
   width: 100%;
   overflow-wrap: break-word;
 }
 
-.product-description-title{
+.product-description-title {
   font-size: 1.5rem;
   color: #000000;
   text-transform: capitalize;
-} 
-
-
+}
 
 .add-to-cart-section {
   display: flex;
@@ -167,31 +164,30 @@
 }
 
 .product-specifications-title {
-  font-size: 1.5rem;  /* Slightly larger font size for the heading */
-  color: #000000;  /* Dark text color for good contrast */
-  margin-bottom: 10px; 
-  text-transform:capitalize;  /* Space below the heading */
+  font-size: 1.5rem; /* Slightly larger font size for the heading */
+  color: #000000; /* Dark text color for good contrast */
+  margin-bottom: 10px;
+  text-transform: capitalize; /* Space below the heading */
 }
 
 .product-specifications ul {
-  list-style-type:disc;  
-  padding-left: 20px;  
+  list-style-type: disc;
+  padding-left: 20px;
 }
 
 .product-specifications li {
-  font-size: 1rem;  /* Set a standard font size for the list items */
-  margin-bottom: 8px;  /* Space between list items */
-  color: #555;  
-  text-transform:capitalize;
+  font-size: 1rem; /* Set a standard font size for the list items */
+  margin-bottom: 8px; /* Space between list items */
+  color: #555;
+  text-transform: capitalize;
 }
 
 .product-specifications li strong {
-  color: #222;  /* Darker color for the key name */
+  color: #222; /* Darker color for the key name */
   font-weight: bold;
-  text-transform:capitalize;
+  text-transform: capitalize;
   /* Make the key name bold */
 }
-
 
 .add-to-cart-btn {
   display: flex;
@@ -206,15 +202,15 @@
   cursor: pointer;
   transition: background-color 0.2s;
   flex-grow: 1;
-} 
+}
 
-.add-to-cart-btn:disabled{
-  opacity: 100%; 
+.add-to-cart-btn:disabled {
+  opacity: 100%;
   background-color: #ccc;
   cursor: not-allowed;
-} 
+}
 
-.add-to-cart-btn:disabled:hover{
+.add-to-cart-btn:disabled:hover {
   background-color: #ccc;
 }
 
@@ -225,6 +221,7 @@
 .related-products {
   margin-top: 3rem;
   margin-bottom: 4rem;
+  margin-left: 2rem;
 }
 
 .related-products h2 {
@@ -294,8 +291,7 @@
 }
 
 @media (max-width: 768px) {
-
-  .product-image-section{
+  .product-image-section {
     width: 90%;
     justify-content: center;
   }
@@ -304,10 +300,10 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .related-products-grid {
     grid-template-columns: repeat(2, 1fr);
-  } 
+  }
 
   .product-info-content {
     flex-direction: column; /* Stack left and right sections on mobile */
@@ -319,20 +315,20 @@
     flex: none; /* Remove flex properties */
     width: 100%; /* Take full width */
   }
-  
+
   .product-description-container {
     max-width: 100%; /* Full width on mobile */
-  } 
+  }
 
-  .stock-indicator{
+  .stock-indicator {
     justify-content: center;
   }
-  
+
   .product-specifications {
     margin-top: 2rem; /* Add some margin between sections */
   }
 
-  .product-specifications-title{
+  .product-specifications-title {
     justify-content: center;
   }
 }
@@ -341,34 +337,34 @@
   .related-products-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .add-to-cart-section {
     flex-direction: column;
   }
-  
+
   .add-to-cart-btn {
     width: 100%;
     justify-content: center;
     padding: 0.75rem;
   }
-  
+
   .product-title {
     font-size: 1.5rem;
   }
 }
 
-.single-product-footer-container{
+.single-product-footer-container {
   margin-top: 2rem;
 }
 
-.product-info-left{
+.product-info-left {
   flex: 3;
   max-width: 60%;
   width: 100%;
 }
 
-.product-info-right{
+.product-info-right {
   max-width: 40%;
   flex: 2;
   width: 100%;
-} 
+}

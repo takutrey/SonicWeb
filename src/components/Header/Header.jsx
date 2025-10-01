@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../Header/Header.css"; 
 import {FaSearch, FaBars, FaTimes} from 'react-icons/fa';
-import SonicLogo from '../../assets/images/sonicsignal-logo.png';
+import SonicLogo from '/images/sonicsignal-logo.png';
 
 
 const Header = () => { 

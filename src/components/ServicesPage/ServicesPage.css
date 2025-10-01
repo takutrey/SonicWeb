@@ -1,7 +1,7 @@
 /* Hero Section */
 .servicepage-hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/src/assets/images/group-technicians-doing-brainstorming-reconfiguring-server-farm.jpg");
+    url("/images/group-technicians-doing-brainstorming-reconfiguring-server-farm.jpg");
   background-size: cover;
   background-position: center;
   height: 80vh;
