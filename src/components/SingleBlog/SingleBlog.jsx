@@ -6,7 +6,7 @@ import { AllBlogs, getBlogsByCategory, getSingleBlog } from "../../lib/blogs";
 import Spinner from "../LoadingSpinner/Spinner";
 import { toast } from "sonner";
 
-const baseUrl = "http://localhost:5050";
+const baseUrl = "https://sonicsignal-website.onrender.com";
 
 const SingleBlog = () => {
   const { id } = useParams();

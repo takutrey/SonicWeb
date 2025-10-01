@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { AllProducts } from "../../lib/products.jsx";
 // import CheckoutForm from "../CheckoutForm/CheckoutForm.jsx";
 
-const baseUrl = "http://localhost:5050";
+const baseUrl = "https://sonicsignal-website.onrender.com";
 
 const SonicShop = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

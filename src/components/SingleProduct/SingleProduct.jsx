@@ -8,7 +8,7 @@ import { getSingleProduct, getRelatedProducts } from "../../lib/products.jsx";
 import PropTypes from "prop-types";
 import Footer from "../Footer/Footer.jsx";
 
-const baseUrl = "http://localhost:5050";
+const baseUrl = "https://sonicsignal-website.onrender.com";
 
 const CartSidebar = ({ items, setIsCartOpen, updateQuantity, removeItem }) => {
   const total = items.reduce(

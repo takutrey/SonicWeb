@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Testimonials.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   addTestimonial,
   fetchActiveTestimonials,
@@ -11,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
-const baseUrl = "http://localhost:5050/";
+const baseUrl = "https://sonicsignal-website.onrender.com/";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,6 +28,10 @@ const Testimonials = () => {
     rating: 0,
   });
   const [hoverRating, setHoverRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+  const recaptchaRef = useRef(null);
   const dispatch = useDispatch();
 
   const { testimonial, isLoading } = useSelector((state) => state.testimonials);
@@ -36,6 +41,7 @@ const Testimonials = () => {
   }, [dispatch]);
 
   const handleShowModal = () => setShowModal(true);
+
   const handleCloseModal = () => {
     setShowModal(false);
     // Reset form data when closing modal
@@ -49,6 +55,13 @@ const Testimonials = () => {
       rating: 0,
     });
     setHoverRating(0);
+    setRecaptchaToken(null);
+    setIsSubmitting(false);
+
+    // Reset reCAPTCHA
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
   };
 
   const handleInputChange = (e) => {
@@ -76,8 +89,33 @@ const Testimonials = () => {
     });
   };
 
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate required fields
+    if (
+      !reviewData.firstname ||
+      !reviewData.lastname ||
+      !reviewData.company ||
+      !reviewData.position ||
+      !reviewData.comment ||
+      reviewData.rating === 0
+    ) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    // Check if reCAPTCHA is completed
+    if (!recaptchaToken) {
+      toast.error("Please complete the reCAPTCHA verification");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     const testimonialData = {
       firstname: reviewData.firstname,
@@ -87,22 +125,40 @@ const Testimonials = () => {
       position: reviewData.position,
       rating: reviewData.rating,
       image: reviewData.image,
+      recaptchaToken: recaptchaToken, // Add reCAPTCHA token to the data
     };
 
     dispatch(addTestimonial(testimonialData))
       .unwrap()
       .then(() => {
         setShowModal(false);
-        toast.success("Review added");
+        toast.success("Review added successfully!");
         dispatch(fetchActiveTestimonials());
         dispatch(reset());
+
+        // Reset reCAPTCHA
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       })
-      .catch(() => toast.error("Failed to add review"));
+      .catch((error) => {
+        console.error("Failed to add review:", error);
+        toast.error("Failed to add review. Please try again.");
+
+        // Reset reCAPTCHA on error
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setRecaptchaToken(null);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   // Auto-advance carousel
   useEffect(() => {
-    if (!isAutoPlay) return;
+    if (!isAutoPlay || testimonial.length === 0) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonial.length);
@@ -145,10 +201,12 @@ const Testimonials = () => {
   };
 
   const goToNext = () => {
+    if (testimonial.length === 0) return;
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonial.length);
   };
 
   const goToPrev = () => {
+    if (testimonial.length === 0) return;
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + testimonial.length) % testimonial.length
     );
@@ -258,6 +316,7 @@ const Testimonials = () => {
                     onChange={handleInputChange}
                     className="custom-form-control"
                     required
+                    disabled={isSubmitting}
                   />
                 </Form.Group>
               </div>
@@ -271,6 +330,7 @@ const Testimonials = () => {
                     onChange={handleInputChange}
                     className="custom-form-control"
                     required
+                    disabled={isSubmitting}
                   />
                 </Form.Group>
               </div>
@@ -287,6 +347,7 @@ const Testimonials = () => {
                     onChange={handleInputChange}
                     className="custom-form-control"
                     required
+                    disabled={isSubmitting}
                   />
                 </Form.Group>
               </div>
@@ -300,6 +361,7 @@ const Testimonials = () => {
                     onChange={handleInputChange}
                     className="custom-form-control"
                     required
+                    disabled={isSubmitting}
                   />
                 </Form.Group>
               </div>
@@ -316,6 +378,7 @@ const Testimonials = () => {
                 required
                 placeholder="Share your experience with our service..."
                 className="custom-form-control"
+                disabled={isSubmitting}
               />
             </Form.Group>
 
@@ -331,10 +394,20 @@ const Testimonials = () => {
                 accept="image/*"
                 onChange={handleImageChange}
                 className="custom-form-control"
+                disabled={isSubmitting}
               />
               <Form.Text className="text-muted">
                 This will be displayed alongside your review
               </Form.Text>
+            </Form.Group>
+
+            {/* reCAPTCHA Component */}
+            <Form.Group className="mb-3">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={import.meta.env.VITE_RECAPTCHA_CLIENT_SITE_KEY}
+                onChange={handleRecaptchaChange}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -342,14 +415,16 @@ const Testimonials = () => {
           <Button
             style={{ backgroundColor: "#1a1a1a", borderColor: "#1a1a1a" }}
             onClick={handleCloseModal}
+            disabled={isSubmitting}
           >
             Cancel
           </Button>
           <Button
             onClick={handleSubmit}
             style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            disabled={isSubmitting || !recaptchaToken}
           >
-            Submit Review
+            {isSubmitting ? "Submitting..." : "Submit Review"}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "sonner";
 
-const baseUrl = "http://localhost:5050/api";
+const baseUrl = "https://sonicsignal-website.onrender.com/api";
 
 export async function AllBlogs() {
   try {

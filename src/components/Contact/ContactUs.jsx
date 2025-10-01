@@ -4,7 +4,7 @@ import "../Contact/ContactUs.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
-const baseUrl = "http://localhost:5050/api";
+const baseUrl = "https://sonicsignal-website.onrender.com/api";
 
 const Contact = () => {
   const recaptchaRef = useRef(null);
@@ -168,7 +168,7 @@ const Contact = () => {
             <ReCAPTCHA
               ref={recaptchaRef}
               size="invisible"
-              sitekey="6Le2rjYrAAAAAAM5BoYKfQANtQU6Zv46_aMsOPrp"
+              sitekey={import.meta.env.VITE_RECAPTCHA_CLIENT_SITE_KEY}
               onChange={onChange}
             />
           </form>

@@ -19,7 +19,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import axios from "axios";
 import { toast } from "sonner";
 
-const baseUrl = "http://localhost:5050/api";
+const baseUrl = "https://sonicsignal-website.onrender.com/api";
 
 const CheckoutForm = ({ onSubmit, items: initialItems }) => {
   const dispatch = useDispatch();

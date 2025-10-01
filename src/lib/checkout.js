@@ -2,10 +2,13 @@ import axios from "axios";
 
 export const sendEmailInvoice = async (orderData) => {
   try {
-    await axios.post("http://localhost:5050/api/send-invoice", {
-      email: orderData.customer.email,
-      orderData: orderData,
-    });
+    await axios.post(
+      "https://sonicsignal-website.onrender.com/api/send-invoice",
+      {
+        email: orderData.customer.email,
+        orderData: orderData,
+      }
+    );
     return true;
   } catch (error) {
     return false;
@@ -15,7 +18,7 @@ export const sendEmailInvoice = async (orderData) => {
 export const addCustomerData = async (orderData) => {
   try {
     const response = await axios.post(
-      "http://localhost:5050/api/customers/add-customer",
+      "https://sonicsignal-website.onrender.com/api/customers/add-customer",
       orderData
     );
 
@@ -29,7 +32,7 @@ export const ecocashPayment = async (paymentData) => {
   const { phone, total, reference } = paymentData;
   try {
     const response = await axios.post(
-      "http://localhost:5050/api/ecocash/ecocash-pay",
+      "https://sonicsignal-website.onrender.com/api/ecocash/ecocash-pay",
       { phone, total, reference }
     );
 
@@ -44,7 +47,7 @@ export const ecocashTransactionLookup = async (paymentData) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5050/api/ecocash/check-transaction",
+      "https://sonicsignal-website.onrender.com/api/ecocash/check-transaction",
       { phone, reference }
     );
 

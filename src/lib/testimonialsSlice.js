@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseUrl = "http://localhost:5050/api/testimonials";
+const baseUrl = "https://sonicsignal-website.onrender.com/api/testimonials";
 
 const initialState = {
   testimonial: [],

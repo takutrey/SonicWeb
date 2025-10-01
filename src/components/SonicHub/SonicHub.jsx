@@ -4,7 +4,7 @@ import "./SonicHub.css";
 import { AllBlogs } from "../../lib/blogs.jsx";
 import Spinner from "../LoadingSpinner/Spinner.jsx";
 
-const baseUrl = "http://localhost:5050";
+const baseUrl = "https://sonicsignal-website.onrender.com";
 
 function SonicHub() {
   const [blogPosts, setBlogPosts] = useState([]);
